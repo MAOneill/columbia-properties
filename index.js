@@ -19,15 +19,23 @@ app.set('view engine','html');
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
 
-app.use(session ( {
+const options = {
     store: new FileStore(),
-    secret: process.env.SESSION_SECRET
-}));
+    secret: process.env.SESSION_SECRET,
+    name: 'my.connect.sid'
+}
+//added the name so we can delete cookies
+app.use(session ( options));
 
 const loginRouter = require('./routes/login');
+const logoutRouter = require('./routes/logout');
 
 //allows form parameters values to be stored in req.body on post
 app.use(express.urlencoded({extended:true}));
+
+//if logout is clicked from any page 
+//this will delete the session variables
+app.use('/logout',logoutRouter);
 
 //tells where to process which http request
 app.use('/login',loginRouter);
