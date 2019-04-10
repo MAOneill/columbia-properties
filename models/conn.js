@@ -12,7 +12,7 @@
         
         const options = {
             host: 'localhost',
-            database: 'todo-app'   //change this to your database name!!!
+            database: 'columbiaprop-app'   //change this to your database name!!!
         
         };
         

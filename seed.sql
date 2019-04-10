@@ -14,6 +14,14 @@ values
 ('Harmon Jenkins','Director of Leasing','hjenkins@columbiapropertiesinc.com','(678) 460-3122','As Director of Leasing for Columbia, Harman is responsible for directing all of the leasing and marketing efforts for CRM’s portfolio of properties. She joined CRM in 2008 after spending 18 months as Director of Leasing with RCG Ventures. At RCG, Harman oversaw the leasing effort for a portfolio of retail property totaling over 3,000,000 square feet.  Prior to her stint with RCG, Harman spent 9 years as a leasing agent with Columbia Properties overseeing a portfolio of 1,000,000 square feet and 2 years as a leasing agent with Spectrum Services.  In total, Harman has been leasing shopping centers in Metro Atlanta for over 15 years and knows the market and tenants as well as anyone.  Harman is a graduate of Georgia State University.',1),
 ('Rob O’Neill','Partner','roneill@columbiapropertiesinc.com','(678) 460-3124','Rob is responsible for oversight of Columbia’s management and leasing operation, as well as project management.  Rob has been in the commercial real estate business since receiving his MBA from the University of Miami in 1993.  Prior to joining Columbia in 2007, Rob spent 11 years in commercial lending with Column Financial, a subsidiary of Credit Suisse, where he was responsible for the origination and underwriting of over $1.5 billion in commercial real estate loans.  The majority of the loans Rob originated were for shopping centers in the Southeast giving him detailed operating knowledge that he applies on a daily basis in overseeing the management of Columbia’s portfolio.  Rob holds and MBA from the University of Miami and a Finance BBA from the University of Georgia.',2);
 
+
+insert into users
+(name,login_id,password)
+values
+('Harmon','harmon','password'),
+('Rob','roneill','password');
+
+
 insert into property 
 (property_name,street_address,county,city,state,zipcode,squarefeet,description,directions,contact_id,type,show_mp,show_di,show_pd,pd_description,year_opened,major_tenants)
 values

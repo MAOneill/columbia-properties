@@ -13,6 +13,13 @@ create table employee (
         department_id integer references dept(id)
 );
 
+create table users (
+    id serial primary key,
+    name varchar(100) UNIQUE,
+    login_id varchar(50),
+    password varchar(300)
+);
+
 create table property (
   id serial primary key,
   property_name varchar(150),
