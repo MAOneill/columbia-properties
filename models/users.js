@@ -15,7 +15,7 @@ class User {
         //db.ANY always returns an array
         // return db.any(`SELECT * FROM users WHERE id=${id}`);  //returns array w/ object
         //instead use db.ONE when you are returning ONE thing
-        return db.one(`SELECT * FROM users WHERE login_id='${loginId}'`)  //returns an object
+        return db.one(`SELECT * FROM users WHERE login_id=$1`,[loginId])  //returns an object
             .then((userData)=> {
 
                 const userInstance = new User(userData.id, userData.name, userData.login_id, userData.password);    

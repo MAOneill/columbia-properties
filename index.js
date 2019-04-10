@@ -29,6 +29,7 @@ app.use(session ( options));
 
 const loginRouter = require('./routes/login');
 const logoutRouter = require('./routes/logout');
+const mainRouter = require('./routes/main');
 
 //allows form parameters values to be stored in req.body on post
 app.use(express.urlencoded({extended:true}));
@@ -40,7 +41,7 @@ app.use('/logout',logoutRouter);
 //tells where to process which http request
 app.use('/login',loginRouter);
 
-
+app.use('/main',mainRouter);
 
 //catch all
 app.use('*', (req, res) => {
