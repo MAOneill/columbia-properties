@@ -6,9 +6,14 @@
   "directories": {
     "test": "test"
   },
+
+  "nodemonConfig": {
+    "ignore": ["sessions", "propertyphotos"]
+  },
+
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon index.js",
+    "dev": "nodemon --ignore sessions index.js",
     "db:create": "createdb columbiaprop-app",
     "db:init": "psql -f schema.sql columbiaprop-app && psql -f seed.sql columbiaprop-app",
     "db:destroy": "dropdb columbiaprop-app",

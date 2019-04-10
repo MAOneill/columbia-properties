@@ -18,8 +18,8 @@ values
 insert into users
 (name,login_id,password)
 values
-('Harmon','harmon','password'),
-('Rob','roneill','password');
+('Harmon','harmon','$2a$10$15re/.f9yF0n2xhaoe5iTe0odY0IxbgoKVksqdyGobaecXzKgEUPG'),
+('Rob','roneill','$2a$10$e1goHoRtk30TeAyZ72Km7egFY74kiT5jkzYT6J1qXwIqso8CFbq6m');
 
 
 insert into property 

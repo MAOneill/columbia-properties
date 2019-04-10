@@ -39,6 +39,7 @@ class User {
     }
     checkPassword(password) {
         //returns true or false
+        console.log(`comparing passwords`);
         return bcrypt.compareSync(password,this.password);
     }
 };

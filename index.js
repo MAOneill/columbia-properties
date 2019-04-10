@@ -1,4 +1,5 @@
 require('dotenv').config();
+
 const express = require('express');
 const app = express();
 
@@ -13,8 +14,9 @@ app.engine('html',es6Renderer);
 app.set('views','./views');
 app.set('view engine','html');
 
+
 //to save values to session folder
-const session = require('session');
+const session = require('express-session');
 const FileStore = require('session-file-store')(session);
 
 app.use(session ( {
@@ -30,6 +32,8 @@ app.use(express.urlencoded({extended:true}));
 //tells where to process which http request
 app.use('/login',loginRouter);
 
+
+
 //catch all
 app.use('*', (req, res) => {
     res.status('404').send('We do not have a page for that yet.');
@@ -37,6 +41,7 @@ app.use('*', (req, res) => {
 
 
 app.listen(process.env.PORT ,() => {
+// app.listen(3600 ,() => {
     console.log(`columbia prop app running on port: ${process.env.PORT}.`);
 });
 
