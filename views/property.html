@@ -89,6 +89,9 @@ body {
   /* position: relative;   */
 
 }
+.addimagesubform {
+    border:solid 2px purple;
+}
 
 </style>
 
@@ -188,11 +191,19 @@ body {
                 ).join(' ')}
 
     </div>
-
-
+</div>
     <button class="saveChanges" type="submit" >Save</button></form>
 
 </form>
+
+<div class="addimagesubform" >Upload an Image<br>
+    <form class="addimagesubform" action="/property/addimage" METHOD="POST" encType="multipart/form-data">
+        <input type="hidden" name="propid" value=${property.id ? property.id : ""}>
+        <input name="properyimage" type="file" accept="image/png, image/jpeg, image/jpg, image/gif"/><br>
+
+        <button type="submit" class="submit-button">Upload File</button>
+    </form>
+
                      
                         
                  

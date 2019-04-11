@@ -3,9 +3,11 @@ const Employee = require('../models/employee');
 const Photo = require('../models/photo');
 const utils = require('./utils');
 
+
+
 async function showOneProperty (req, res) {
 
-    // console.log("the body propid is ", req.body.propid);
+    console.log("the body propid is ", req.body.propid);
     //test that userid is in req.session ... if not - kick back to login
     if (req.session.userId) {
 
@@ -149,4 +151,51 @@ else {
 
 }
 
-module.exports = {showOneProperty, saveProperty, blankProperty};
+function uploadImage (req, res) {
+    //using express-fileupload - it will b4e in the req.files object
+    // console.log("the property image is ", req.files.properyimage);
+    // console.log("WE GET TOTHIS POINT");
+
+    
+        if (Object.keys(req.files).length == 0) {
+          return res.status(400).send('No files were uploaded.');
+        }
+      
+        let sampleFile = req.files.properyimage;
+    //   console.log(sampleFile.name);
+        //get a unique number based on date and user id
+
+        //i need defaults for all of these values....
+
+        let userid = 8;
+        userid = userid.toString();
+        let date = new Date();
+        let seconds = parseInt(date.getTime() / 1000).toString();
+        
+        //i still need the file extension
+        let filenameParts = sampleFile.name.split('.');
+        // console.log(filenameParts);
+        // console.log(`The file type is ${filenameParts[filenameParts.length - 1]}`);
+        let extension = filenameParts[filenameParts.length - 1];
+        // console.log(`the filename is   ${fileName}`);
+        
+        let fileName = userid + seconds + "." + extension;
+        console.log(fileName);
+
+    //just use html formatting
+    //   .+\.([jpg|jpeg|gif|png|JPG|JPEG|GIF|PNG]{3,4})$
+
+        // Use the mv() method to place the file somewhere on your server
+        // sampleFile.mv('./myuploadedfiles/needsunique.jpg', function(err) {
+        sampleFile.mv(`./public/propertyphotos/${fileName}`, function(err) {
+          if (err)
+            return res.status(500).send(err);
+      
+          res.send('File uploaded!');
+        });
+
+}
+
+
+
+module.exports = {showOneProperty, saveProperty, blankProperty, uploadImage};

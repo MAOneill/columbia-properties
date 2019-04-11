@@ -14,6 +14,10 @@ app.engine('html',es6Renderer);
 app.set('views','./views');
 app.set('view engine','html');
 
+//this is used to upload files
+//will this work insdie express??
+const fileUpload = require('express-fileupload');
+
 
 //to save values to session folder
 const session = require('express-session');
@@ -25,12 +29,18 @@ const options = {
     name: 'my.connect.sid'
 }
 //added the name so we can delete cookies
+
 app.use(session ( options));
 
 //this allows you to view things in the public directory
 //images, css, and client side javascript have to be  in public
 
 app.use(express.static('public'))
+
+//this had to be after the other two app.use statements
+app.use(fileUpload(
+    {createParentPath:true}
+));
 
 const loginRouter = require('./routes/login');
 const logoutRouter = require('./routes/logout');
