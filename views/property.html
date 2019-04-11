@@ -196,7 +196,9 @@ body {
 
 </form>
 
-<div class="addimagesubform" >Upload an Image<br>
+<h3 ${property.id ? "hidden": "" }>Add the property first and then come back to add images</h3>
+
+<div ${property.id ? "": "hidden" } class="addimagesubform" >Upload an Image<br>
     <form class="addimagesubform" action="/property/addimage" METHOD="POST" encType="multipart/form-data">
         <input type="hidden" name="propid" value=${property.id ? property.id : ""}>
         <input name="properyimage" type="file" accept="image/png, image/jpeg, image/jpg, image/gif"/><br>

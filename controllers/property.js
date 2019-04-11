@@ -7,28 +7,30 @@ const utils = require('./utils');
 async function showProperty(mymessage,newflag, req, res) {
 
     console.log("the body propid is ", req.body.propid);
-    let allPictures = {};
+    let allPictures = [];
+    let theProperty = [];
     //this variable is essentiall global i think
     if (req.session.userId) {
 
+        if (!newflag) {
         //get the properties from database
         theProperty = await Property.getById(parseInt(req.body.propid));
-        //send the property.html page with all the details
 
-        //get employees for select
-        const allEmployees = await Employee.getAll();
         //get pictures to select
-        //if a new blank property, this is an empty object
-        if (!newflag) {
-            allPictures = await Photo.getAllforProperty(req.body.propid);
+        //if a new blank property, this is an empty array!
+        allPictures = await Photo.getAllforProperty(req.body.propid);
         }
         console.log(allPictures);
         //if allpictures is blank - just send an empty object...
         //because this could happen too...
         if (!allPictures) {
-            allPictures = {};
+            allPictures = [];
         }
 
+        //get employees for select
+        const allEmployees = await Employee.getAll();
+
+        //send the property.html page with all the details
         res.render('property',{locals:{message:mymessage,userid:req.session.userid,property:theProperty,allEmployees,allPictures}});
 
     }
@@ -107,8 +109,6 @@ async function saveProperty (req, res) {
 
     //scrub any data with utility funciton
 
-
-
     //convert numerica values to NUMERIC
     const id = utils.covertToNull(req.body.propid);
     const yearopen = utils.covertToNull(req.body.yearopen);
@@ -170,9 +170,10 @@ else {
     console.log(mynewprop.rows[0].id);  
     console.log('THE SQL FORM THE INSERT IS', mynewprop);
 
+    res.redirect('/main')
+    
     //here we could just rediect to main....
-
-    showProperty("Property Added",false, req, res)
+    // showProperty("Property Added",false, req, res)
     // if (req.session.userId) {
 
     //     //get all properties from database
