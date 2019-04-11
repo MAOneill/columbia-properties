@@ -42,6 +42,7 @@ deletePhoto(id){
     db.result(`DELETE from photo where id=$1`,[id])
     .catch((error) => {
         console.error(error);
+    })
 
 }
 

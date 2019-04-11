@@ -180,9 +180,13 @@ body {
     <input type="number" name="photoid" value='${property.photo ? property.photo : ""}' id="form-photo-id" size=30>
     <div>Place for all the pictures</div>
     <div class="myflexbox">  
-            <div class="eachpicture"><input class="pictureradio" type="radio" name="selectedphoto" value=1> <div class="pictureframe"><img src="../propertyphotos/bbc5b2f68f59a78.jpg"></div></div>
-            <div class="eachpicture"><input class="pictureradio" type="radio" name="selectedphoto" value=2> <div class="pictureframe"><img src="../propertyphotos/bbc5b2f68f59a78.jpg"></div></div>
-            <div class="eachpicture"><input class="pictureradio" type="radio" name="selectedphoto" value=3> <div class="pictureframe"><img src="../propertyphotos/bbc5b2f68f59a78.jpg"></div></div>
+
+
+            ${allPictures.map((pic) => `
+                <div class="eachpicture"><input ${pic.id === property.photo ? "checked" : ""} class="pictureradio" type="radio" name="photoid" value=${pic.id}> <div class="pictureframe"><img src="../${pic.url}"></div></div>
+                `
+                ).join(' ')}
+
     </div>
 
 

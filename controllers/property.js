@@ -1,5 +1,6 @@
 const Property = require('../models/property');
 const Employee = require('../models/employee');
+const Photo = require('../models/photo');
 const utils = require('./utils');
 
 async function showOneProperty (req, res) {
@@ -13,10 +14,18 @@ async function showOneProperty (req, res) {
         // console.log('THE PROPERTY IS ', theProperty)
         //send the property.html page with all the details
 
-
+        //get employees for select
         const allEmployees = await Employee.getAll();
+        //get pictures to select
+        let allPictures = await Photo.getAllforProperty(req.body.propid);
 
-        res.render('property',{locals:{message:"",userid:req.session.userid,property:theProperty,allEmployees}});
+        console.log(allPictures);
+        //if allpictures is blank - just send an empty object...
+        if (!allPictures) {
+            allPictures = {};
+        }
+
+        res.render('property',{locals:{message:"",userid:req.session.userid,property:theProperty,allEmployees,allPictures}});
     }
     else {
         //there is no valid user - don't allow anything

@@ -43,7 +43,8 @@ values
 insert into photo
 (prop_id,url,photo_name)
 values
-(1,'propertyphotos/bbc5b2f68f59a78.jpg','brownsville_ugly.jpg');
+(1,'propertyphotos/bbc5b2f68f59a78.jpg','brownsville_ugly.jpg'),
+(2,'propertyphotos/bbc5b2f68f59a78.jpg','brownsville3_ugly.jpg');
 
 insert into media
 (prop_id,url,file_title,display)
