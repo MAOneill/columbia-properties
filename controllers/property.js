@@ -49,17 +49,17 @@ async function saveProperty (req, res) {
 
     //scrub any data with utility funciton
     console.log("The req.body.photoid is ", req.body.photoid, typeof req.body.photoid);
-    console.log("The req.body.photoid is ", req.body.contactid, typeof req.body.contactid);
+    console.log("The req.body.contactid is ", req.body.contactid, typeof req.body.contactid);
 
     //convert numerica values to NUMERIC
-    const id = utils.covertToNull(req.body.id);
+    const id = utils.covertToNull(req.body.propid);
     const yearopen = utils.covertToNull(req.body.yearopen);
     const contactid = utils.covertToNull(req.body.contactid);
     const sqfeet = utils.covertToNull(req.body.squarefeet);
     const photoid = utils.covertToNull(req.body.photoid);
 
 
-
+console.log("The id of the property is", id);
 console.log(req.body.yearopen, typeof req.body.yearopen);
 
 
@@ -71,11 +71,14 @@ console.log(updateProperty);
 
 
 //the propid will be null or blank when adding a new property
+//it will be populated when saving
 if (req.body.propid) {
 
     //save to database using newProperty.save()
+    console.log(("the propid is ", req.body.propid));
+
     await updateProperty.save()
-    .catch((err) => console.log(err));
+    .catch((err) => console.log("SOMTHING BLEW UP", err));
 
     //redisplay that property to the user with a message of 'changes saved'
     //i really want to just call my showOneProperty function above, but I cant change the message in the locals
