@@ -19,4 +19,15 @@ function convertCheckboxBoolean(field) {
        return false;
     }
 }
-module.exports = {escapeHtml, convertCheckboxBoolean};
+
+function covertToNull(field) {
+    if (field) {
+        return field;
+    }
+    else {
+        return null;
+    }
+
+
+}
+module.exports = {escapeHtml, convertCheckboxBoolean, covertToNull};

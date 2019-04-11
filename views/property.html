@@ -76,7 +76,7 @@ body {
 
 <form action="/property/update" method="POST">
     <h1>property id ${property.id}</h1>
-    <input type="hidden" name="propid" value=${property.id ? property.id : null}>
+    <input type="hidden" name="propid" value=${property.id ? property.id : ""}>
 
     <label for="form-prop-name">Property Name</label>
     <input type="text" name="propertyname" value='${property.propertyName ? property.propertyName: "nameme"}' id="form-prop-name" size=100>

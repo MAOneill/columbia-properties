@@ -55,6 +55,18 @@ class Property {
                 return null;  //signal an invalid value
             });
     }
+
+    addNew() {
+        return db.result(`INSERT into property
+        (property_name,street_address,county,city,state,zipcode,squarefeet,description,directions,contact_id,type,show_mp,show_di,show_pd,pd_description,year_opened,major_tenants,photo)
+        values
+        ('${this.propertyName}','${this.streetAddress}','${this.county}','${ this.city }','${this.state}','${this.zipcode}',
+ ${this.squarefeet},'${this.description}','${this.directions}', ${this.contactId},'${this.type}',${this.showMP}, ${this.showDI}, ${this.showPD},'${this.pdDescription}',${this.yearOpened},
+'${this.majorTenants}',${this.photo}) returning id` );
+      
+    }
+
+    
     //no 'static' since this is an instance method.  it belongs to the instance, not the class
     //this saves the property to the database
     save() {
