@@ -49,8 +49,12 @@ body {
     border: solid 2px brown;}
 
     .mytextarea {
-        width:95%;
+        width:100%;
         
+    }
+
+    form > input {
+        width: 100%;
     }
 </style>
 
@@ -60,6 +64,7 @@ body {
                   <div class="container">
                     <h1 class="jumbotron-heading">Individual Property Page</h1>
                     <h2>Welcome User ${userid}</h2>
+                    <h3>${message}</h3>
                     <p class="lead text-muted">    
 
                   </p>
@@ -71,6 +76,7 @@ body {
 
 <form action="/property/update" method="POST">
     <h1>property id ${property.id}</h1>
+    <input type="hidden" name="propid" value=${property.id}>
 
     <label for="form-prop-name">Property Name</label>
     <input type="text" name="propertyname" value='${property.propertyName}' id="form-prop-name" size=100>
@@ -123,13 +129,14 @@ body {
     <label for="form-year-open">Year Opened</label>
     <input type="number" name="yearopen" value='${property.yearOpened}' id="form-year-open" size=30>
     <br>
-    <label for="form-major-tennants">Year Opened</label>
+    <label for="form-major-tennants">Major Tenants</label>
     <input type="text" name="majortenants" value='${property.majorTenants}' id="form-major-tennants" size=30>
     <br>
     <label for="form-photo-id">Photo ID</label>
     <input type="number" name="photoid" value='${property.photo}' id="form-photo-id" size=30>
 
 
+    <button class="saveChanges" type="submit" >Save</button></form>
 
 </form>
                      

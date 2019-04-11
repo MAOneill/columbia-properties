@@ -58,28 +58,35 @@ class Property {
     //no 'static' since this is an instance method.  it belongs to the instance, not the class
     //this saves the property to the database
     save() {
+        /*
+        return db.result(`UPDATE property SET
+        property_name='${this.propertyName}' where id = ${this.id}`);
+        */
         return db.result(`UPDATE property SET 
 
-        property_name = ${this.propertyName},
-        street_address = ${this.streetAddress},
-        county = ${this.county},
-        city = ${ this.city },
-        state = ${this.state},
-        zipcode = ${this.zipcode},
+        property_name = '${this.propertyName}',
+        street_address = '${this.streetAddress}',
+        county = '${this.county}',
+        city = '${ this.city }',
+        state = '${this.state}',
+        zipcode = '${this.zipcode}',
         squarefeet = ${this.squarefeet},
-        description = ${this.description},
-        directions = ${this.directions},
+        description = '${this.description}',
+        directions = '${this.directions}',
         contact_id = ${this.contactId},
-        type = ${this.type},
+        type = '${this.type}',
         show_mp = ${this.showMP},
         show_di = ${this.showDI},
         show_pd = ${this.showPD},
-        pd_description = ${this.pdDescription},
+        pd_description = '${this.pdDescription}',
         year_opened = ${this.yearOpened},
-        major_tenants = ${this.majorTenants},
+        major_tenants = '${this.majorTenants}',
         photo = ${this.photo}
             where id = ${this.id}`);
+
+            
     }
     //WE NEED A DELETE - BUT IT NEEDS A VERIFY PAGE
+    //actually i don't want a delete.  we can alwasy just show not to show, but we very rarely delete properties
 };
 module.exports = Property;

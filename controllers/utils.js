@@ -10,5 +10,13 @@ function escapeHtml (text) {
         return map[m];
     })
 }
-
-module.exports = escapeHtml;
+//if the checked html field is 'on' then return a value of true
+function convertCheckboxBoolean(field) {
+    if (field === 'on') {
+       return true;
+    }
+    else {
+       return false;
+    }
+}
+module.exports = {escapeHtml, convertCheckboxBoolean};
