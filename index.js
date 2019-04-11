@@ -27,6 +27,11 @@ const options = {
 //added the name so we can delete cookies
 app.use(session ( options));
 
+//this allows you to view things in the public directory
+//images, css, and client side javascript have to be  in public
+
+app.use(express.static('public'))
+
 const loginRouter = require('./routes/login');
 const logoutRouter = require('./routes/logout');
 const mainRouter = require('./routes/main');

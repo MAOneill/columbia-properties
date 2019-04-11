@@ -56,6 +56,40 @@ body {
     form > input {
         width: 100%;
     }
+    .myflexbox {
+        display:flex;
+        /* border:solid 2px blue; */
+        /* width: 100%; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    /* align-items: center; */
+    flex-wrap: wrap;
+}
+
+.pictureradio {
+    height: 20px;
+}
+.eachpicture {
+    padding:5px;
+    border: solid 2px black;
+}
+    
+    .pictureframe {
+        width:200px;
+  height: 200px;  
+  /* border:solid 2px red; */
+
+    }
+
+    .pictureframe img {
+  width:100%;
+  height:100%;
+  object-fit: cover;
+  /* position: relative;   */
+
+}
+
 </style>
 
 <body>
@@ -141,8 +175,15 @@ body {
     <label for="form-major-tennants">Major Tenants</label>
     <input type="text" name="majortenants" value='${property.majorTenants ? property.majorTenants : ""}' id="form-major-tennants" size=30>
     <br>
+    <hr>
     <label for="form-photo-id">Photo ID</label>
     <input type="number" name="photoid" value='${property.photo ? property.photo : ""}' id="form-photo-id" size=30>
+    <div>Place for all the pictures</div>
+    <div class="myflexbox">  
+            <div class="eachpicture"><input class="pictureradio" type="radio" name="selectedphoto" value=1> <div class="pictureframe"><img src="../propertyphotos/bbc5b2f68f59a78.jpg"></div></div>
+            <div class="eachpicture"><input class="pictureradio" type="radio" name="selectedphoto" value=2> <div class="pictureframe"><img src="../propertyphotos/bbc5b2f68f59a78.jpg"></div></div>
+            <div class="eachpicture"><input class="pictureradio" type="radio" name="selectedphoto" value=3> <div class="pictureframe"><img src="../propertyphotos/bbc5b2f68f59a78.jpg"></div></div>
+    </div>
 
 
     <button class="saveChanges" type="submit" >Save</button></form>
