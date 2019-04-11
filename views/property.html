@@ -105,11 +105,21 @@ body {
     <label for="form-directions">directions</label>
     <input type="text" name="directions" value='${property.directions ? property.directions : ""}' id="form-directions" size=30>
     <br>
-    <label for="form-contact-id">contact id</label>
-    <input type="text" name="contactid" value='${property.contactId ? property.contactId : 1}' id="form-contact-id" size=30>
+    <label for="form-contact-id">contact person to display</label>
+
+    <select class="contactid" name="contactid" id="inputstate" id="form-contact-id" >
+
+            ${allEmployees.map((emp) => `
+                <option value=${emp.id} ${emp.id === property.contactId ? "selected" : ""} >${emp.name}</option>`).join(' ')}
+            </select>
+    
+    
+    
     <br>
-    <label for="form-type">contact id</label>
+    <label for="form-type">Property Type</label>
     <input type="text" name="type" value='${property.type ? property.type : ""}' id="form-type" size=30>
+
+
     <br>
     <label for="form-show-main-prop">Show on Main Properties Page</label>
     <input type="checkbox" name="showmp" ${property.showMP ? 'checked' : ''} id="form-show-main-prop" size=30>

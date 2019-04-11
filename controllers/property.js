@@ -1,4 +1,5 @@
 const Property = require('../models/property');
+const Employee = require('../models/employee');
 const utils = require('./utils');
 
 async function showOneProperty (req, res) {
@@ -12,7 +13,10 @@ async function showOneProperty (req, res) {
         // console.log('THE PROPERTY IS ', theProperty)
         //send the property.html page with all the details
 
-        res.render('property',{locals:{message:"",userid:req.session.userid,property:theProperty}});
+
+        const allEmployees = await Employee.getAll();
+
+        res.render('property',{locals:{message:"",userid:req.session.userid,property:theProperty,allEmployees}});
     }
     else {
         //there is no valid user - don't allow anything
@@ -21,7 +25,7 @@ async function showOneProperty (req, res) {
     
 }
 
-function blankProperty (req, res) {
+async function blankProperty (req, res) {
     //show the property html form with all blanks
     //still check that the user is log in
     if (req.session.userId) {
@@ -29,7 +33,10 @@ function blankProperty (req, res) {
         // console.log('THE PROPERTY IS ', theProperty)
         //send the property.html page with all the details
 
-        res.render('property',{locals:{message:"Enter info and hit Save",userid:req.session.userid,property:{}}});
+        const allEmployees = await Employee.getAll();
+
+
+        res.render('property',{locals:{message:"Enter info and hit Save",userid:req.session.userid,property:{},allEmployees}});
     }
     else {
         //there is no valid user - don't allow anything
@@ -48,8 +55,8 @@ async function saveProperty (req, res) {
     const showpd = utils.convertCheckboxBoolean(req.body.showpd);
 
     //scrub any data with utility funciton
-    console.log("The req.body.photoid is ", req.body.photoid, typeof req.body.photoid);
-    console.log("The req.body.contactid is ", req.body.contactid, typeof req.body.contactid);
+
+
 
     //convert numerica values to NUMERIC
     const id = utils.covertToNull(req.body.propid);
@@ -66,7 +73,7 @@ console.log(req.body.yearopen, typeof req.body.yearopen);
     //create an instance of a Property Object
 const updateProperty = new Property(id, req.body.propertyname, req.body.streetaddress, req.body.county, req.body.city, req.body.state, req.body.zipcode, sqfeet, req.body.description, req.body.directions, contactid, req.body.type, showmp, showdi, showpd, req.body.pddescription, yearopen, req.body.majortenants, photoid);   
 
-console.log("the property object after being int he form......");
+console.log("the property object after being int the form......");
 console.log(updateProperty);
 
 
@@ -85,10 +92,14 @@ if (req.body.propid) {
     if (req.session.userId) {
 
         //get all properties from database
-        theProperty = await Property.getById(parseInt(req.body.propid));
+        const theProperty = await Property.getById(parseInt(req.body.propid));
         //send the property.html page with all the details
 
-        res.render('property',{locals:{message:"Changes Saved",userid:req.session.userid,property:theProperty}});
+        //get contact id list
+        
+        const allEmployees = await Employee.getAll();
+
+        res.render('property',{locals:{message:"Changes Saved",userid:req.session.userid,property:theProperty,allEmployees}});
     }
     else {
         //there is no valid user - don't allow anything
@@ -112,7 +123,9 @@ else {
         theProperty = await Property.getById(parseInt(mynewprop.rows[0].id));
         //send the property.html page with all the details
 
-        res.render('property',{locals:{message:"Property Added",userid:req.session.userid,property:theProperty}});
+        const allEmployees = await Employee.getAll();
+
+        res.render('property',{locals:{message:"Property Added",userid:req.session.userid,property:theProperty,allEmployees}});
     }
     else {
         //there is no valid user - don't allow anything
