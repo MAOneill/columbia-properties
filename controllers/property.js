@@ -21,7 +21,24 @@ async function showOneProperty (req, res) {
     
 }
 
+function blankProperty (req, res) {
+    //show the property html form with all blanks
+console.log('IS THIS GETTING CALLED???');
+    //still check that the user is log in
+    if (req.session.userId) {
 
+        // console.log('THE PROPERTY IS ', theProperty)
+        //send the property.html page with all the details
+
+        res.render('property',{locals:{message:"Enter info and hit Save",userid:req.session.userid,property:{}}});
+    }
+    else {
+        //there is no valid user - don't allow anything
+        res.redirect('/login');
+    }
+
+
+}
 
 async function saveProperty (req, res) {
     //take all fields from form in req.body
@@ -46,6 +63,10 @@ const updateProperty = new Property(parseInt(req.body.propid), req.body.property
 console.log("the property object after being int he form......");
 console.log(updateProperty);
 
+
+//if the id is null - INSERT
+//otherwise UPDATE
+
     //save to database using newProperty.save()
     await updateProperty.save()
     .catch((err) => console.log(err));
@@ -64,9 +85,6 @@ console.log(updateProperty);
         //there is no valid user - don't allow anything
         res.redirect('/login');
     }
-
-
-
 }
 
-module.exports = {showOneProperty, saveProperty};
+module.exports = {showOneProperty, saveProperty, blankProperty};

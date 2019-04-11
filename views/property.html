@@ -76,41 +76,41 @@ body {
 
 <form action="/property/update" method="POST">
     <h1>property id ${property.id}</h1>
-    <input type="hidden" name="propid" value=${property.id}>
+    <input type="hidden" name="propid" value=${property.id ? property.id : null}>
 
     <label for="form-prop-name">Property Name</label>
-    <input type="text" name="propertyname" value='${property.propertyName}' id="form-prop-name" size=100>
+    <input type="text" name="propertyname" value='${property.propertyName ? property.propertyName: "nameme"}' id="form-prop-name" size=100>
 <br>
     <label for="form-street-address">Street Address</label>
-    <input type="text" name="streetaddress" value='${property.streetAddress}' id="form-street-address" size=100>
+    <input type="text" name="streetaddress" value='${property.streetAddress ? property.streetAddress : ""}' id="form-street-address" size=100>
     <br>
     <label for="form-county">County</label>
-    <input type="text" name="county" value='${property.county}' id="form-county" size=30>
+    <input type="text" name="county" value='${property.county ? property.county : ""}' id="form-county" size=30>
     <br>
     <label for="form-city">City</label>
-    <input type="text" name="city" value='${property.city}' id="form-city" size=30>
+    <input type="text" name="city" value='${property.city ? property.city : ""}' id="form-city" size=30>
     <br>
     <label for="form-state">State</label>
-    <input type="text" name="state" value='${property.state}' id="form-state" size=30>
+    <input type="text" name="state" value='${property.state ? property.state : ""}' id="form-state" size=30>
     <br>
     <label for="form-zipcode">Zip Code</label>
-    <input type="text" name="zipcode" value='${property.zipcode}' id="form-zipcode" size=30>
+    <input type="text" name="zipcode" value='${property.zipcode ? property.zipcode : ""}' id="form-zipcode" size=30>
     <br>
     <label for="form-squarefeet">Squarefeet</label>
-    <input type="number" name="squarefeet" value='${property.squarefeet}' id="form-squarefeet" size=30>
+    <input type="number" name="squarefeet" value='${property.squarefeet ? property.squarefeet : ""}' id="form-squarefeet" size=30>
     <br>
     <label for="form-description">Property Highlights</label>
-    <textarea class="tinymce" name="description" id="form-description" >${property.description}</textarea>
+    <textarea class="tinymce" name="description" id="form-description" >${property.description ? property.description : ""}</textarea>
 
     <br>
     <label for="form-directions">directions</label>
-    <input type="text" name="directions" value='${property.directions}' id="form-directions" size=30>
+    <input type="text" name="directions" value='${property.directions ? property.directions : ""}' id="form-directions" size=30>
     <br>
     <label for="form-contact-id">contact id</label>
-    <input type="text" name="contactid" value='${property.contactId}' id="form-contact-id" size=30>
+    <input type="text" name="contactid" value='${property.contactId ? property.contactId : 1}' id="form-contact-id" size=30>
     <br>
     <label for="form-type">contact id</label>
-    <input type="text" name="type" value='${property.type}' id="form-type" size=30>
+    <input type="text" name="type" value='${property.type ? property.type : ""}' id="form-type" size=30>
     <br>
     <label for="form-show-main-prop">Show on Main Properties Page</label>
     <input type="checkbox" name="showmp" ${property.showMP ? 'checked' : ''} id="form-show-main-prop" size=30>
@@ -124,16 +124,16 @@ body {
     <br>
     <label for="form-previous-dev-desc">Previous Developments short description (starts with 'is')</label>
     <br>
-    <textarea class="mytextarea" name="pddescription" id="form-previous-dev-desc" rows="10">${property.pdDescription}</textarea>
+    <textarea class="mytextarea" name="pddescription" id="form-previous-dev-desc" rows="10">${property.pdDescription ? property.pdDescription : ""}</textarea>
     <br>
     <label for="form-year-open">Year Opened</label>
-    <input type="number" name="yearopen" value='${property.yearOpened}' id="form-year-open" size=30>
+    <input type="number" name="yearopen" value='${property.yearOpened ? property.yearOpened : ""}' id="form-year-open" size=30>
     <br>
     <label for="form-major-tennants">Major Tenants</label>
-    <input type="text" name="majortenants" value='${property.majorTenants}' id="form-major-tennants" size=30>
+    <input type="text" name="majortenants" value='${property.majorTenants ? property.majorTenants : ""}' id="form-major-tennants" size=30>
     <br>
     <label for="form-photo-id">Photo ID</label>
-    <input type="number" name="photoid" value='${property.photo}' id="form-photo-id" size=30>
+    <input type="number" name="photoid" value='${property.photo ? property.photo : ""}' id="form-photo-id" size=30>
 
 
     <button class="saveChanges" type="submit" >Save</button></form>
