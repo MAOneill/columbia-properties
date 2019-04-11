@@ -36,7 +36,9 @@ async function verifyUser  (req, res) {
                 req.session.save( () => {
                     // res.render('main',{locals:{userid:req.session.userId}});
                     console.log('trying to render main html');
-                    res.render('main',{locals:{userid:req.session.userId}});
+                    res.redirect('/main');
+
+                    // res.render('main',{locals:{userid:req.session.userId}});
                 })
             }
             //wrong password

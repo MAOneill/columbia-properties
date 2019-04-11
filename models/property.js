@@ -35,7 +35,7 @@ class Property {
         .then((sqlProperties) => {
             const propertyArray = [];
             sqlProperties.forEach((prop) => {
-                const propInstance = new Property(prop.id, prop.property_name, prop.street_address, prop.county, prop.city, prop.state, zipcode, squarefeet, description, directions, prop.contact_id, prop.type, prop.show_mp, prop.show_di, prop.show_pd, prop.pd_description, prop.year_opened, prop.major_tenants, prop.photo);   
+                const propInstance = new Property(prop.id, prop.property_name, prop.street_address, prop.county, prop.city, prop.state, prop.zipcode, prop.squarefeet, prop.description, prop.directions, prop.contact_id, prop.type, prop.show_mp, prop.show_di, prop.show_pd, prop.pd_description, prop.year_opened, prop.major_tenants, prop.photo);   
                 propertyArray.push(propInstance);
             })
             return propertyArray;
@@ -47,7 +47,7 @@ class Property {
     static getById(id) {
         return db.one(`SELECT * FROM property WHERE id=$1`,[id])  //returns an object
             .then((prop)=> {
-                const propertyInstance = new Property(propData.id, propData.property_name, propData.street_address, propData.county, propData.city, propData.state, zipcode, squarefeet, description, directions, propData.contact_id, propData.type, propData.show_mp, propData.show_di, propData.show_pd, propData.pd_description, propData.year_opened, propData.major_tenants, propData.photo);    
+                const propertyInstance = new Property(prop.id, prop.property_name, prop.street_address, prop.county, prop.city, prop.state, prop.zipcode, prop.squarefeet, prop.description, prop.directions, prop.contact_id, prop.type, prop.show_mp, prop.show_di, prop.show_pd, prop.pd_description, prop.year_opened, prop.major_tenants, prop.photo);    
                 return propertyInstance;    
             })
             .catch((error) => {

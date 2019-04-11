@@ -41,6 +41,36 @@ html {
                   </p>
                   </div>
                 </section>
+
+                <div>Properties</div>
+                <div class="card mb-12 shadow-sm" style="overflow-y: auto; max-height: 250px;">
+
+                    <ul >
+
+                     
+                        
+                          
+
+                          ${properties.map((property) =>  `<li  >
+                              <form action="/property" method="POST">
+                              <input name="propid" value="${property.id}" style="display:none;">
+                              <button class="propertyButton" type="submit" >${property.propertyName}</button></form>
+                          
+                          
+                          
+                          </li>`).join(' ')}
+      
+
+
+                     
+
+                    </ul>
+                 
+                </div>
+
+
+
+
                 <div><a href="/logout">LOGOUT</a></div>
 
           
