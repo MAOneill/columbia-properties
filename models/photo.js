@@ -28,18 +28,18 @@ static getAllforProperty(propid) {
     });
 }
 
-addPhoto(name, propid, url, photoname) {
+static addPhoto(propid, url, photoname) {
     //this with get called AFTER we actually upload the file
-    return db.result(`INSERT into photo (name, prop_id, url, photo_name)
+    return db.result(`INSERT into photo (prop_id, url, photo_name)
     values
-    ($1, $2, $3, $4)`,[name, propid, url, photoname]);
+    ($1, $2, $3)`,[propid, url, photoname]);
 
     //after an add or delete, we have to refresh the page.
 }
 
-deletePhoto(id){
+static deletePhoto(id){
     //remember if you call deletephoto to set the photo_id to null for the property or to some default?
-    db.result(`DELETE from photo where id=$1`,[id])
+    return db.result(`DELETE from photo where id=$1`,[id])
     .catch((error) => {
         console.error(error);
     })
