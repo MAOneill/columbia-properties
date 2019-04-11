@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <!--This is the Tiny code for the wysiwyg text editor-->
+    <!--this will only affect textareas with a class of tinymce-->
+    <script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=9tw2ppy0n9zv0luejilt5gudytcifi9pbqj795dhe79b2xf8"></script>
+    <script>tinymce.init({ selector:'textarea.tinymce' , plugins: " lists ",
+    toolbar: "numlist bullist | styleselect| fontselect| bold italic| undo redo",
+    menubar: 'format   '});</script>
+
+  
+    <title>CPI backend login page</title>
+</head>
+<style>
+
+
+
+.jumbotron {
+    padding: 1px;
+
+    background-color: #98ccae;
+    background-color: #b8ffea;
+    background-color: #ffb991 ;
+    color: #5f2f22;
+}
+html {
+    background-color: #b8ffea;
+    background-color: #ffb991 ;
+}
+    .alert-primary {
+    color: #5f2f22;
+    background-color: #b8ffea;
+    border-color: #b8ffea;
+}
+body {
+    background-color: #ffb991 ;
+
+}
+.middle {
+    width:85%;
+    margin:auto;
+    background-color: white;
+    border: solid 2px brown;}
+
+    .mytextarea {
+        width:95%;
+        
+    }
+</style>
+
+<body>
+
+              <section class="jumbotron text-center">
+                  <div class="container">
+                    <h1 class="jumbotron-heading">Individual Property Page</h1>
+                    <h2>Welcome User ${userid}</h2>
+                    <p class="lead text-muted">    
+
+                  </p>
+                  </div>
+                </section>
+
+                <div class="middle" >
+                    <div>Properties</div>
+
+<form action="/property/update" method="POST">
+    <h1>property id ${property.id}</h1>
+
+    <label for="form-prop-name">Property Name</label>
+    <input type="text" name="propertyname" value='${property.propertyName}' id="form-prop-name" size=100>
+<br>
+    <label for="form-street-address">Street Address</label>
+    <input type="text" name="streetaddress" value='${property.streetAddress}' id="form-street-address" size=100>
+    <br>
+    <label for="form-county">County</label>
+    <input type="text" name="county" value='${property.county}' id="form-county" size=30>
+    <br>
+    <label for="form-city">City</label>
+    <input type="text" name="city" value='${property.city}' id="form-city" size=30>
+    <br>
+    <label for="form-state">State</label>
+    <input type="text" name="state" value='${property.state}' id="form-state" size=30>
+    <br>
+    <label for="form-zipcode">Zip Code</label>
+    <input type="text" name="zipcode" value='${property.zipcode}' id="form-zipcode" size=30>
+    <br>
+    <label for="form-squarefeet">Squarefeet</label>
+    <input type="number" name="squarefeet" value='${property.squarefeet}' id="form-squarefeet" size=30>
+    <br>
+    <label for="form-description">Property Highlights</label>
+    <textarea class="tinymce" name="description" id="form-description" >${property.description}</textarea>
+
+    <br>
+    <label for="form-directions">directions</label>
+    <input type="text" name="directions" value='${property.directions}' id="form-directions" size=30>
+    <br>
+    <label for="form-contact-id">contact id</label>
+    <input type="text" name="contactid" value='${property.contactId}' id="form-contact-id" size=30>
+    <br>
+    <label for="form-type">contact id</label>
+    <input type="text" name="type" value='${property.type}' id="form-type" size=30>
+    <br>
+    <label for="form-show-main-prop">Show on Main Properties Page</label>
+    <input type="checkbox" name="showmp" ${property.showMP ? 'checked' : ''} id="form-show-main-prop" size=30>
+    <br>
+    <label for="form-show-dev-inv">Show on Developments and Investments Page</label>
+    <input type="checkbox" name="showdi" ${property.showDI ? 'checked' : ''} id="form-show-dev-inv" size=30>
+    <br>
+    <label for="form-show-prev-dev">Show on Previous Developmens Section</label>
+    <input type="checkbox" name="showpd"  ${property.showPD ? 'checked' : ''} id="form-show-prev-dev" size=30>
+
+    <br>
+    <label for="form-previous-dev-desc">Previous Developments short description (starts with 'is')</label>
+    <br>
+    <textarea class="mytextarea" name="pddescription" id="form-previous-dev-desc" rows="10">${property.pdDescription}</textarea>
+    <br>
+    <label for="form-year-open">Year Opened</label>
+    <input type="number" name="yearopen" value='${property.yearOpened}' id="form-year-open" size=30>
+    <br>
+    <label for="form-major-tennants">Year Opened</label>
+    <input type="text" name="majortenants" value='${property.majorTenants}' id="form-major-tennants" size=30>
+    <br>
+    <label for="form-photo-id">Photo ID</label>
+    <input type="number" name="photoid" value='${property.photo}' id="form-photo-id" size=30>
+
+
+
+</form>
+                     
+                        
+                 
+                </div>
+
+
+
+
+                <div><a href="/logout">LOGOUT</a></div>
+
+          
+          
+
+
+
+
+</body>
+</html>
