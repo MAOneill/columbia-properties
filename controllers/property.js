@@ -106,12 +106,14 @@ async function saveProperty (req, res) {
     const contactid = utils.covertToNull(req.body.contactid);
     const sqfeet = utils.covertToNull(req.body.squarefeet);
     const photoid = utils.covertToNull(req.body.photoid);
+    const mapx = utils.covertToNull(req.body.mapx);
+    const mapy = utils.covertToNull(req.body.mapy);
 
 
 console.log("The id of the property is", id);
 
     //create an instance of a Property Object
-const updateProperty = new Property(id, cleanPropertyName, cleanStreetAddress, cleanCounty, cleanCity, cleanState, cleanZipCode, sqfeet, cleanDescription, cleanDirections, contactid, cleanType, showmp, showdi, showpd, cleanPDDescription, yearopen, cleanTenants, photoid);   
+const updateProperty = new Property(id, cleanPropertyName, cleanStreetAddress, cleanCounty, cleanCity, cleanState, cleanZipCode, sqfeet, cleanDescription, cleanDirections, contactid, cleanType, showmp, showdi, showpd, cleanPDDescription, yearopen, cleanTenants, photoid, mapx, mapy);   
 
 console.log("the property object after being int the form......");
 console.log(updateProperty);

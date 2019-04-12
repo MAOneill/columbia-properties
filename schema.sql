@@ -38,7 +38,9 @@ create table property (
   show_pd boolean DEFAULT false,
   pd_description text,
   year_opened integer,
-  major_tenants varchar(100)  
+  major_tenants varchar(100),
+  mapx integer,
+  mapy integer  
 );
 
 

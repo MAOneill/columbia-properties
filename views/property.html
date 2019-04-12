@@ -184,6 +184,14 @@ body {
     <label for="form-major-tennants">Major Tenants</label>
     <input maxlength="98" type="text" name="majortenants" value='${property.majorTenants ? property.majorTenants : ""}' id="form-major-tennants" size=30>
     <br>
+
+<!-- hidden fields for the map x and y coordinates -->
+    <input  hidden type="number" name="mapx" value='${property.mapx ? property.mapx : "0"}' id="form-mapx" >
+    <br>
+    <input hidden type="number" name="mapy" value='${property.mapy ? property.mapy : "0"}' id="form-mapy" >
+    <br>
+
+
     <hr>
     <div>Place for all the pictures</div>
     <div class="myflexbox">  

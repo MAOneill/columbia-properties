@@ -7,7 +7,7 @@ const utils = require('../controllers/utils') ;  //utility file
 class Property {
     constructor (id, property_name, street_address, county, city, state, zipcode, squarefeet,
         description, directions, contact_id, type, show_mp, show_di, show_pd, pd_description, year_opened,
-        major_tenants, photo) {
+        major_tenants, photo, mapx, mapy) {
             this.id = id;
             this.propertyName = property_name;
             this.streetAddress = street_address;
@@ -27,6 +27,8 @@ class Property {
             this.yearOpened = year_opened;
             this.majorTenants = major_tenants;
             this.photo = photo;
+            this.mapx = mapx;
+            this.mapy = mapy;
         }
 
     static getAllProperties() {
@@ -35,7 +37,7 @@ class Property {
         .then((sqlProperties) => {
             const propertyArray = [];
             sqlProperties.forEach((prop) => {
-                const propInstance = new Property(prop.id, prop.property_name, prop.street_address, prop.county, prop.city, prop.state, prop.zipcode, prop.squarefeet, prop.description, prop.directions, prop.contact_id, prop.type, prop.show_mp, prop.show_di, prop.show_pd, prop.pd_description, prop.year_opened, prop.major_tenants, prop.photo);   
+                const propInstance = new Property(prop.id, prop.property_name, prop.street_address, prop.county, prop.city, prop.state, prop.zipcode, prop.squarefeet, prop.description, prop.directions, prop.contact_id, prop.type, prop.show_mp, prop.show_di, prop.show_pd, prop.pd_description, prop.year_opened, prop.major_tenants, prop.photo, prop.mapx, prop.mapy);   
                 propertyArray.push(propInstance);
             })
             return propertyArray;
@@ -47,7 +49,7 @@ class Property {
     static getById(id) {
         return db.one(`SELECT * FROM property WHERE id=$1`,[id])  //returns an object
             .then((prop)=> {
-                const propertyInstance = new Property(prop.id, prop.property_name, prop.street_address, prop.county, prop.city, prop.state, prop.zipcode, prop.squarefeet, prop.description, prop.directions, prop.contact_id, prop.type, prop.show_mp, prop.show_di, prop.show_pd, prop.pd_description, prop.year_opened, prop.major_tenants, prop.photo);    
+                const propertyInstance = new Property(prop.id, prop.property_name, prop.street_address, prop.county, prop.city, prop.state, prop.zipcode, prop.squarefeet, prop.description, prop.directions, prop.contact_id, prop.type, prop.show_mp, prop.show_di, prop.show_pd, prop.pd_description, prop.year_opened, prop.major_tenants, prop.photo, prop.mapx, prop.mapy);    
                 return propertyInstance;    
             })
             .catch((error) => {
@@ -59,11 +61,11 @@ class Property {
     //i am not going to use this.  using addNewBlank below
     addNew() {
         return db.result(`INSERT into property
-        (property_name,street_address,county,city,state,zipcode,squarefeet,description,directions,contact_id,type,show_mp,show_di,show_pd,pd_description,year_opened,major_tenants,photo)
+        (property_name,street_address,county,city,state,zipcode,squarefeet,description,directions,contact_id,type,show_mp,show_di,show_pd,pd_description,year_opened,major_tenants,photo,mapx,mapy)
         values
         ('${this.propertyName}','${this.streetAddress}','${this.county}','${ this.city }','${this.state}','${this.zipcode}',
  ${this.squarefeet},'${this.description}','${this.directions}', ${this.contactId},'${this.type}',${this.showMP}, ${this.showDI}, ${this.showPD},'${this.pdDescription}',${this.yearOpened},
-'${this.majorTenants}',${this.photo}) returning id` );
+'${this.majorTenants}',${this.photo}, ${this.mapx},${this.mapy}) returning id` );
       
     }
 
@@ -99,7 +101,9 @@ class Property {
         pd_description = '${this.pdDescription}',
         year_opened = ${this.yearOpened},
         major_tenants = '${this.majorTenants}',
-        photo = ${this.photo}
+        photo = ${this.photo},
+        mapx = ${this.mapx},
+        mapy = ${this.mapy}
             where id = ${this.id}`);
 
             
