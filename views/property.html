@@ -66,7 +66,10 @@ body {
     /* align-items: center; */
     flex-wrap: wrap;
 }
+.hidden {
+    display: none;
 
+}
 .pictureradio {
     height: 20px;
 }
@@ -94,6 +97,19 @@ body {
 }
 .mymediabox {
     border: 2px solid brown;
+}
+.mymap {
+    /* position: relative; */
+}
+.mapdiv{
+position: relative;
+
+}
+
+.thestar {
+    position: absolute;
+    top:${property.mapy}px;
+    left:${property.mapx}px;
 }
 
 </style>
@@ -186,9 +202,9 @@ body {
     <br>
 
 <!-- hidden fields for the map x and y coordinates -->
-    <input  hidden type="number" name="mapx" value='${property.mapx ? property.mapx : "0"}' id="form-mapx" >
+    <input  hidden type="number" data-mapx name="mapx" value='${property.mapx ? property.mapx : "0"}' id="form-mapx" >
     <br>
-    <input hidden type="number" name="mapy" value='${property.mapy ? property.mapy : "0"}' id="form-mapy" >
+    <input hidden type="number" data-mapy name="mapy" value='${property.mapy ? property.mapy : "0"}' id="form-mapy" >
     <br>
 
 
@@ -221,6 +237,13 @@ body {
 
 
 </div>
+
+<div class="mapdiv">The Map - click to position property on the map
+   <br>
+<img  class="mymap" style="margin: 10px;" src="../img/metroatlga.jpg" data-map-element alt="">
+<img class="thestar " data-the-star src="../img/thestar.png" alt="">
+</div>
+<hr>
 
     <button class="saveChanges" type="submit" >Save</button></form>
 
@@ -257,6 +280,7 @@ body {
 
 
 
+    <script src="/scripts/property.js"></script> 
 
 </body>
 </html>
