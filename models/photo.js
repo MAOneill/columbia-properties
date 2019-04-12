@@ -8,7 +8,7 @@ class Photo {
     constructor (id, prop_id, url, photo_name) {
         this.id = id;
         this.propId = prop_id;
-        this.url = url
+        this.url = url;
         this.photoName = photo_name;
     }
 

@@ -92,6 +92,9 @@ body {
 .addimagesubform {
     border:solid 2px purple;
 }
+.mymediabox {
+    border: 2px solid brown;
+}
 
 </style>
 
@@ -164,7 +167,7 @@ body {
     <label for="form-show-dev-inv">Show on Developments and Investments Page</label>
     <input type="checkbox" name="showdi" ${property.showDI ? 'checked' : ''} id="form-show-dev-inv" size=30>
     <br>
-    <label for="form-show-prev-dev">Show on Previous Developmens Section</label>
+    <label for="form-show-prev-dev">Show on Previous Developments Section</label>
     <input type="checkbox" name="showpd"  ${property.showPD ? 'checked' : ''} id="form-show-prev-dev" size=30>
 
     <br>
@@ -191,6 +194,23 @@ body {
                 ).join(' ')}
 
     </div>
+
+
+   
+    <div class="mymediabox">  
+        <div >Place for all the Media</div>
+
+            ${allMedia.map((media) => `
+                <div class="eachmedia"><input ${media.display ? "checked" : ""} class="mediacheckbox" type="checkbox" name="mediaid" value=${media.id}> 
+                    ${media.fileTitle}
+                </div><br>
+                `
+                ).join(' ')}
+
+    </div>
+
+
+
 </div>
     <button class="saveChanges" type="submit" >Save</button></form>
 

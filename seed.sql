@@ -51,6 +51,13 @@ insert into media
 values
 (1,'mediafiles/FINANCIAL_STATEMENT.pdf','Tenant Lease Applicatoin',true),
 (1,'mediafiles/Brownsville-Square-Flyer.pdf', 'Brownsville Square Property Information',true),
+(1,'mediafiles/FINANCIAL_STATEMENT.pdf','Tenant Lease Applicatoin',true),
+(2,'mediafiles/Brownsville-Square-Flyer.pdf', 'Brownsville Square Property Information',false),
+(2,'mediafiles/FINANCIAL_STATEMENT.pdf','Tenant Lease Applicatoin',true),
+(1,'mediafiles/Brownsville-Square-Flyer.pdf', 'Brownsville Square Property Information',true),
+(1,'mediafiles/FINANCIAL_STATEMENT.pdf','Tenant Lease Applicatoin',true),
+(2,'mediafiles/Brownsville-Square-Flyer.pdf', 'Brownsville Square Property Information',false),
+(2,'mediafiles/FINANCIAL_STATEMENT.pdf','Tenant Lease Applicatoin',true),
 (1,'mediafiles/Prince-Creek-Village-Center-Marketing-Package','dontuse',false);
 
 

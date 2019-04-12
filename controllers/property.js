@@ -1,6 +1,7 @@
 const Property = require('../models/property');
 const Employee = require('../models/employee');
 const Photo = require('../models/photo');
+const Media = require('../models/media');
 const utils = require('./utils');
 
 //master show property fucntion so i don't rewrite it 5 times...
@@ -10,6 +11,7 @@ async function showProperty(PropID, mymessage,newflag, req, res) {
     console.log("the body propid is ", PropID);
     let allPictures = [];
     let theProperty = [];
+    let allMedia = [];
     //this variable is essentiall global i think
     if (req.session.userId) {
 
@@ -20,19 +22,26 @@ async function showProperty(PropID, mymessage,newflag, req, res) {
         //get pictures to select
         //if a new blank property, this is an empty array!
         allPictures = await Photo.getAllforProperty(PropID);
+
+        allMedia = await Media.getAllforProperty(PropID);
+        // console.log(allMedia);
         }
-        console.log(allPictures);
+        // console.log(allPictures);
         //if allpictures is blank - just send an empty object...
         //because this could happen too...
+        //DO I NEED THIS?  I'M SETTING A DEFAULT EMPTY ARRAY ABOVE, WILL IT GET OVERWRITTEN WITH NULL?
         if (!allPictures) {
             allPictures = [];
+        }
+        if (!allMedia) {
+            allMedia = [];
         }
 
         //get employees for select
         const allEmployees = await Employee.getAll();
 
         //send the property.html page with all the details
-        res.render('property',{locals:{message:mymessage,userid:req.session.userid,property:theProperty,allEmployees,allPictures}});
+        res.render('property',{locals:{message:mymessage,userid:req.session.userid,property:theProperty,allEmployees,allPictures,allMedia}});
 
     }
     else {
@@ -67,7 +76,8 @@ async function showProperty(PropID, mymessage,newflag, req, res) {
 async function saveProperty (req, res) {
     //take all fields from form in req.body
     //convert check boxes to true/false
-
+    console.log("what is in the req.body for mediaid????");
+    console.log(req.body);
     const showmp = utils.convertCheckboxBoolean(req.body.showmp);
     const showdi = utils.convertCheckboxBoolean(req.body.showdi);
     const showpd = utils.convertCheckboxBoolean(req.body.showpd);
@@ -83,7 +93,6 @@ async function saveProperty (req, res) {
 
 
 console.log("The id of the property is", id);
-console.log(req.body.yearopen, typeof req.body.yearopen);
 
     //create an instance of a Property Object
 const updateProperty = new Property(id, req.body.propertyname, req.body.streetaddress, req.body.county, req.body.city, req.body.state, req.body.zipcode, sqfeet, req.body.description, req.body.directions, contactid, req.body.type, showmp, showdi, showpd, req.body.pddescription, yearopen, req.body.majortenants, photoid);   
@@ -98,6 +107,19 @@ if (req.body.propid) {
 
     //save to database using newProperty.save()
     console.log(("the propid is ", req.body.propid));
+
+    //update the media database:
+    //first make all media references false for don't show
+    await Media.setAllMediaFalse(req.body.propid);
+    //then if they were selected, set them to true
+    //the media ids are stored in the array req.body.mediaid
+    // I have to handle if there are no media files selected
+    if (req.body.mediaid) {
+        req.body.mediaid.forEach( async (id) =>  {
+            await Media.setDisplayTrue(id);
+        })
+    }
+   
 
     await updateProperty.save()
     .catch((err) => console.log("SOMTHING BLEW UP", err));
