@@ -78,11 +78,27 @@ async function saveProperty (req, res) {
     //convert check boxes to true/false
     console.log("what is in the req.body for mediaid????");
     console.log(req.body);
+
     const showmp = utils.convertCheckboxBoolean(req.body.showmp);
     const showdi = utils.convertCheckboxBoolean(req.body.showdi);
     const showpd = utils.convertCheckboxBoolean(req.body.showpd);
 
-    //scrub any data with utility funciton
+    //scrub any data with utility funciton.  the tinymce block gets speical handling
+    const cleanDescription = utils.escapeQuotes(req.body.description);
+    
+    //clean all the other text fields
+    
+    const cleanPropertyName = utils.escapeHtml(req.body.propertyname);
+    const cleanStreetAddress = utils.escapeHtml(req.body.streetaddress);
+    const cleanCounty = utils.escapeHtml(req.body.county);
+    const cleanCity = utils.escapeHtml(req.body.city);
+    const cleanState = utils.escapeHtml(req.body.state);
+    const cleanZipCode = utils.escapeHtml(req.body.zipcode);
+    const cleanDirections = utils.escapeHtml(req.body.directions);
+    const cleanType = utils.escapeHtml(req.body.type);
+    const cleanPDDescription = utils.escapeHtml(req.body.pddescription);
+    const cleanTenants = utils.escapeHtml(req.body.majortenants);
+
 
     //convert numerica values to NUMERIC
     const id = utils.covertToNull(req.body.propid);
@@ -95,7 +111,7 @@ async function saveProperty (req, res) {
 console.log("The id of the property is", id);
 
     //create an instance of a Property Object
-const updateProperty = new Property(id, req.body.propertyname, req.body.streetaddress, req.body.county, req.body.city, req.body.state, req.body.zipcode, sqfeet, req.body.description, req.body.directions, contactid, req.body.type, showmp, showdi, showpd, req.body.pddescription, yearopen, req.body.majortenants, photoid);   
+const updateProperty = new Property(id, cleanPropertyName, cleanStreetAddress, cleanCounty, cleanCity, cleanState, cleanZipCode, sqfeet, cleanDescription, cleanDirections, contactid, cleanType, showmp, showdi, showpd, cleanPDDescription, yearopen, cleanTenants, photoid);   
 
 console.log("the property object after being int the form......");
 console.log(updateProperty);
@@ -114,10 +130,23 @@ if (req.body.propid) {
     //then if they were selected, set them to true
     //the media ids are stored in the array req.body.mediaid
     // I have to handle if there are no media files selected
+
+    //new twist - if there is ONLY one MEDIA ID, it won't be in an array....ugh
     if (req.body.mediaid) {
-        req.body.mediaid.forEach( async (id) =>  {
-            await Media.setDisplayTrue(id);
-        })
+
+        console.log("the type of mediaid is :" , typeof req.body.mediaid);
+        
+        //only one
+        if ((typeof req.body.mediaid) === "string") {
+            console.log("tis a string");
+            await Media.setDisplayTrue(req.body.mediaid);
+        }
+        else {  //an array of media ids
+            req.body.mediaid.forEach( async (id) =>  {
+                await Media.setDisplayTrue(id);
+            })
+
+        }
     }
    
 
