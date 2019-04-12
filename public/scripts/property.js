@@ -44,17 +44,19 @@ function getMouseData(event) {
     let mapy = e.y - rect.top;
 
     //validity check:
-    if ((mapx < 0) || (mapx > 540)) {
-        mapx = 0;
-    }
-    if ((mapy < 0) || (mapy > 580)) {
-        mapy = 0;
-    }
+    //ok, technically, the star can only be placed 540-31 and 580-31 because of it's size
+    (mapx < 0) ? mapx = 0 : mapx=mapx;
+    (mapx > 509) ? mapx = 509 : mapx=mapx;
+    (mapy < 0 ) ? mapy = 0: mapy=mapy;
+    (mapy > 549) ? mapy = 549 : mapy=mapy;
+
     
     console.log(`the mapx x is ${mapx} and the mapy is ${mapy}`);
     //set the form values:
     mapxelement.value = mapx;
-    mapyelement.value = mapy;
+    mapyelement.value = mapy + 31;
+
+
 
     //make the star visible
 
