@@ -99,6 +99,9 @@ body {
 </style>
 
 <body>
+        <div><a href="/logout">LOGOUT</a></div>
+        <div><a href="/main">Properties</a></div>
+
 
               <section class="jumbotron text-center">
                   <div class="container">
@@ -182,8 +185,6 @@ body {
     <input type="text" name="majortenants" value='${property.majorTenants ? property.majorTenants : ""}' id="form-major-tennants" size=30>
     <br>
     <hr>
-    <label for="form-photo-id">Photo ID delete this section</label>
-    <input type="number" name="oldphotoid" value='${property.photo ? property.photo : ""}' id="form-photo-id" size=30>
     <div>Place for all the pictures</div>
     <div class="myflexbox">  
 
@@ -216,7 +217,6 @@ body {
 
 </form>
 
-<h3 ${property.id ? "hidden": "" }>Add the property first and then come back to add images</h3>
 
 <div ${property.id ? "": "hidden" } class="addimagesubform" >Upload an Image<br>
     <form class="addimagesubform" action="/property/addimage" METHOD="POST" encType="multipart/form-data">
