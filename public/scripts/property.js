@@ -11,6 +11,7 @@ const mapyelement = document.querySelector('[data-mapy]');
 
 const thestar = document.querySelector('[data-the-star]');
 
+const removeStarButtron = document.querySelector('[data-remove-star]');
 
 function getMouseData(event) {
     if(event) {
