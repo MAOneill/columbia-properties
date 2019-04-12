@@ -213,6 +213,7 @@ body {
 
 
 </div>
+
     <button class="saveChanges" type="submit" >Save</button></form>
 
 </form>
@@ -225,11 +226,18 @@ body {
 
         <button type="submit" class="submit-button">Upload File</button>
     </form>
+</div>
 
-                     
-                        
-                 
-                </div>
+<div ${property.id ? "": "hidden" } class="addmediasubform" >Upload a Media file<br>
+    <form class="addmediasubform" action="/property/addmedia" METHOD="POST" encType="multipart/form-data">
+        <input type="hidden" name="mediapropid" value=${property.id ? property.id : ""}>
+        <label for="filetitleform">Name to be Displayed:</label>
+        <input type="text" name="filetitle" id="filetitleform">
+        <input name="mediaimage" type="file" accept=".pdf, .doc, .docx, application/msword"/><br>
+
+        <button type="submit" class="submit-button">Upload Media File</button>
+    </form>
+</div>
 
 
 

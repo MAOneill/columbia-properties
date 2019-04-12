@@ -181,7 +181,37 @@ async function uploadImage (req, res) {
         });
 
 }
+async function uploadMedia (req, res) {
+    if (Object.keys(req.files).length == 0) {
+        return res.status(400).send('No files were uploaded.');
+      }
+    
+      let sampleFile = (req.files.mediaimage ? req.files.mediaimage : "bad_file_name.xxx");
+  //   console.log(sampleFile.name);
+      //get a unique number based on date and user id:
+      let userid = (req.session.userId ? req.session.userId : 0).toString() ;
+      let date = new Date();
+      let seconds = parseInt(date.getTime() / 1000).toString();
+      let fileName = userid + seconds + sampleFile.name;
+
+      sampleFile.mv(`./public/mediafiles/${fileName}`, async function(err) {
+        if (err) {
+
+            return res.status(500).send(err);
+        }
+     
+        //   res.send('File uploaded!');
+
+        // save the data to the database
+        await Media.addMedia(req.body.mediapropid,`propertyphotos/${fileName}`, req.body.filetitle, true) ;
+
+        //and reload the property page
+        showProperty(req.body.mediapropid,"Image uploaded",false, req, res);
+
+    
+      });
+
+}
 
 
-
-module.exports = {showOneProperty, saveProperty, blankProperty, uploadImage};
+module.exports = {showOneProperty, saveProperty, blankProperty, uploadImage, uploadMedia};
