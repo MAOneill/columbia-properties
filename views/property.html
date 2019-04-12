@@ -241,9 +241,9 @@ position: relative;
 <div class="mapdiv">The Map - click to position property on the map
    <br>
 <img  class="mymap" style="margin: 10px;" src="../img/metroatlga.jpg" data-map-element alt="">
-<img class="thestar ${property.mapx === null ? "hidden" : ""}" data-the-star src="../img/thestar.png" alt="">
+<img class="thestar ${(property.mapx === null || (property.mapx === 0 && property.mapy === 0 )) ? "hidden" : ""}" data-the-star src="../img/thestar.png" alt="">
 </div>
-<button data-remove-star ></button>
+<button data-remove-star >Remove Star</button>
 <hr>
 
     <button class="saveChanges" type="submit" >Save</button></form>

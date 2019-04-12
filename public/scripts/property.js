@@ -12,6 +12,7 @@ const mapyelement = document.querySelector('[data-mapy]');
 const thestar = document.querySelector('[data-the-star]');
 
 const removeStarButtron = document.querySelector('[data-remove-star]');
+removeStarButtron.addEventListener('click', removeStar);
 
 function getMouseData(event) {
     if(event) {
@@ -63,6 +64,12 @@ function getMouseData(event) {
     thestar.classList.remove('hidden');
     }
   
+    function removeStar() {
+      mapxelement.value = 0;
+      mapyelement.value = 0;
+        thestar.classList.add('hidden');
+  
+    }
     
   
   
