@@ -48,32 +48,6 @@ async function showProperty(PropID, mymessage,newflag, req, res) {
 
     showProperty(req.body.propid,"nothing to say",false, req, res) ;
 
-    // console.log("the body propid is ", req.body.propid);
-    // //test that userid is in req.session ... if not - kick back to login
-    // if (req.session.userId) {
-
-    //     //get all properties from database
-    //     theProperty = await Property.getById(parseInt(req.body.propid));
-    //     // console.log('THE PROPERTY IS ', theProperty)
-    //     //send the property.html page with all the details
-
-    //     //get employees for select
-    //     const allEmployees = await Employee.getAll();
-    //     //get pictures to select
-    //     let allPictures = await Photo.getAllforProperty(req.body.propid);
-
-    //     console.log(allPictures);
-    //     //if allpictures is blank - just send an empty object...
-    //     if (!allPictures) {
-    //         allPictures = {};
-    //     }
-
-    //     res.render('property',{locals:{message:"",userid:req.session.userid,property:theProperty,allEmployees,allPictures}});
-    // }
-    // else {
-    //     //there is no valid user - don't allow anything
-    //     res.redirect('/login');
-    // }
     
 }
 
@@ -88,22 +62,6 @@ async function showProperty(PropID, mymessage,newflag, req, res) {
     //still check that the user is log in - this is done in showProperty.
 
     showProperty(newPropID,"Enter details and hit save",false, req, res)
-    // if (req.session.userId) {
-
-    //     // console.log('THE PROPERTY IS ', theProperty)
-    //     //send the property.html page with all the details
-
-    //     const allEmployees = await Employee.getAll();
-
-
-    //     res.render('property',{locals:{message:"Enter info and hit Save",userid:req.session.userid,property:{},allEmployees}});
-    // }
-    // else {
-    //     //there is no valid user - don't allow anything
-    //     res.redirect('/login');
-    // }
-
-
 }
 
 async function saveProperty (req, res) {
@@ -127,7 +85,6 @@ async function saveProperty (req, res) {
 console.log("The id of the property is", id);
 console.log(req.body.yearopen, typeof req.body.yearopen);
 
-
     //create an instance of a Property Object
 const updateProperty = new Property(id, req.body.propertyname, req.body.streetaddress, req.body.county, req.body.city, req.body.state, req.body.zipcode, sqfeet, req.body.description, req.body.directions, contactid, req.body.type, showmp, showdi, showpd, req.body.pddescription, yearopen, req.body.majortenants, photoid);   
 
@@ -150,25 +107,6 @@ if (req.body.propid) {
 
 
     showProperty(req.body.propid,"Changes Saved",false, req, res);
-    // if (req.session.userId) {
-
-    //     //get all properties from database
-    //     const theProperty = await Property.getById(parseInt(req.body.propid));
-    //     //send the property.html page with all the details
-
-    //     //get contact id list
-        
-    //     const allEmployees = await Employee.getAll();
-
-    //     res.render('property',{locals:{message:"Changes Saved",userid:req.session.userid,property:theProperty,allEmployees}});
-    // }
-    // else {
-    //     //there is no valid user - don't allow anything
-    //     res.redirect('/login');
-    // }
-
-
-
 }    
 
 else {  //this is for when there is no property id.  this shouldn't happen now..
@@ -182,24 +120,6 @@ else {  //this is for when there is no property id.  this shouldn't happen now..
 
     res.redirect('/main')
     
-    //here we could just rediect to main....
-    // showProperty(req.body.propid,"Property Added",false, req, res)
-    // if (req.session.userId) {
-
-    //     //get all properties from database
-    //     theProperty = await Property.getById(parseInt(mynewprop.rows[0].id));
-    //     //send the property.html page with all the details
-
-    //     const allEmployees = await Employee.getAll();
-
-    //     res.render('property',{locals:{message:"Property Added",userid:req.session.userid,property:theProperty,allEmployees}});
-    // }
-    // else {
-    //     //there is no valid user - don't allow anything
-    //     res.redirect('/login');
-    // }
-
-
 
     }
 //if the id is null - INSERT
@@ -210,8 +130,6 @@ else {  //this is for when there is no property id.  this shouldn't happen now..
 async function uploadImage (req, res) {
     //using express-fileupload - it will b4e in the req.files object
     // console.log("the property image is ", req.files.properyimage);
-    // console.log("WE GET TOTHIS POINT");
-
     
         if (Object.keys(req.files).length == 0) {
           return res.status(400).send('No files were uploaded.');
@@ -224,21 +142,6 @@ async function uploadImage (req, res) {
         let date = new Date();
         let seconds = parseInt(date.getTime() / 1000).toString();
         let fileName = userid + seconds + sampleFile.name;
-        //i still need the file extension
-        // let filenameParts = sampleFile.name.split('.');
-        // console.log(filenameParts);
-        // console.log(`The file type is ${filenameParts[filenameParts.length - 1]}`);
-        // let extension = filenameParts[filenameParts.length - 1];
-        // console.log(`the filename is   ${fileName}`);
-        
-        // let fileName = filenameParts[0] + userid + seconds + "." + extension;
-        // console.log(fileName);
-
-    //just use html formatting
-    //   .+\.([jpg|jpeg|gif|png|JPG|JPEG|GIF|PNG]{3,4})$
-
-        // Use the mv() method to place the file somewhere on your server
-        // sampleFile.mv('./myuploadedfiles/needsunique.jpg', function(err) {
         sampleFile.mv(`./public/propertyphotos/${fileName}`, async function(err) {
           if (err) {
 
