@@ -176,7 +176,13 @@ position: relative;
     
     <br>
     <label for="form-type">Property Type</label>
-    <input type="text" name="type" value='${property.type ? property.type : ""}' id="form-type" size=30>
+
+    <select name="type" id="form-type">
+    <option value="Grocery anchored"  ${property.type ===  "Grocery anchored" ? "SELECTED" : ""} >Grocery anchored</option>
+    <option value="Strip Retail" ${property.type ===  "Strip Retail" ? "SELECTED" : ""} >Strip Retail</option>
+    <option value="Anchored" ${property.type ===  "Anchored" ? "SELECTED" : ""} >Anchored</option>
+    <option value="Outparcels" ${property.type ===  "Outparcels" ? "SELECTED" : ""} >Outparcels</option></select>
+
 
 
     <br>
