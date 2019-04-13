@@ -17,8 +17,11 @@ async function displayOneProperty (req, res) {
         }
         else {  //process data
             const mediaData = await Media.getAllforPropertyClient(req.params.id);
+            console.log(mediaData);
             console.log("The property id is", propertyData);
-            res.send("working on property display");
+            res.render('view-property',{locals:{property:propertyData,media:mediaData}})
+
+            // res.send("working on property display");
         }
 
     }
