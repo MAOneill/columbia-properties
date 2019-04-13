@@ -6,6 +6,8 @@ const clientRouter =  express.Router();
 
 
 clientRouter.get('/property/detail/:id',displayOneProperty);
+    //will be in req.params.id
+
 clientRouter.get('/mainproperties',displayMainProperties);
 clientRouter.get('/home',homePage);
 clientRouter.get('/about',aboutPage);

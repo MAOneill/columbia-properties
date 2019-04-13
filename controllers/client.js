@@ -1,9 +1,33 @@
 const Property = require('../models/property');
 const Employee = require('../models/property');
+const Media = require('../models/media');
 
 
 async function displayOneProperty (req, res) {
+    
+    //id comes in as req.params.id
 
+    const propertyData = await Property.getAPropertyForClient(req.params.id);
+    
+
+    if (propertyData) {
+
+        if (propertyData.show_mp = false) {
+            res.redirect('/client/mainproperties');
+        }
+        else {  //process data
+            const mediaData = await Media.getAllforPropertyClient(req.params.id);
+            console.log("The property id is", propertyData);
+            res.send("working on property display");
+        }
+
+    }
+    else {
+        res.redirect('/client/mainproperties');
+    }
+    
+    //check that 1) the id exists and 2) the show_mp is true
+    //otherwise redirect to mainproperty page
  
 }
 

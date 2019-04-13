@@ -29,6 +29,13 @@ static getAllforProperty(propid) {
     });
 }
 
+static getAllforPropertyClient(propid) {
+    return db.any(`SELECT * from media WHERE prop_id=$1 AND display=true`,[propid])
+    .catch((error) => {
+        console.log(error);
+    })
+}
+
 updateMedia() {
 
     //the user can  only update the display name or the display boolean field
