@@ -46,6 +46,7 @@ const loginRouter = require('./routes/login');
 const logoutRouter = require('./routes/logout');
 const mainRouter = require('./routes/main');
 const propertyRouter = require('./routes/property');
+const clientRouter = require('./routes/client');
 
 //allows form parameters values to be stored in req.body on post
 app.use(express.urlencoded({extended:true}));
@@ -60,6 +61,8 @@ app.use('/login',loginRouter);
 app.use('/main',mainRouter);
 
 app.use('/property',propertyRouter);
+
+app.use('/client',clientRouter);
 
 //catch all
 app.use('*', (req, res) => {
