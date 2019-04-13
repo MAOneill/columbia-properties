@@ -1,0 +1,146 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<title>Properties | Columbia Properties</title>
+<link rel="stylesheet" type="text/css" href="http://columbiapropertiesinc.com/css_zeekee.css" />
+
+
+
+<link rel="icon" href="http://columbiapropertiesinc.com/favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="http://columbiapropertiesinc.com/Icon.png"/> 
+<link rel="apple-touch-icon" sizes="72x72" href="http://columbiapropertiesinc.com/Icon-72.png"/> 
+<link rel="apple-touch-icon" sizes="114x114" href="http://columbiapropertiesinc.com/Icon114x.png"/>  
+<!-- 
+<link rel="stylesheet" type="text/css" href="/jquery.popover.css" media="screen" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js" type="text/javascript"></script> 
+<script type="text/javascript" src="/scripts/jquery.popover.js"></script> -->
+<!-- 
+<script type="text/javascript" src="http://use.typekit.com/qjg4hze.js"></script>
+<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+<script src="/scripts/zeekee.js" type="text/javascript"></script> -->
+<style>
+li {
+    /* display: list-item; */
+    padding-left: 2em;
+    text-indent: -1.5em;
+}
+</style>
+
+
+<body>
+    <div id="bg_repeat-detail">
+        <div id="main_container">
+        <div id="header">
+            <div id="back-home"><a href="/index.php"><img src="/images/btn_backHome.jpg" alt="Back to Home" style="border:none;" /></a>
+            </div>				
+            <div id="logo"><a href="/index.php"><img src="/images/img_logo.jpg" alt="" style="border:none;" /></a>
+            </div>
+            <div id="nav">
+                <a id="nav_01" href="/properties.php"><span> </span></a> <!--onmouseover="P7_MultiClass2('L1','show','L2','hide','L3','hide')" onmouseout="P7_MultiClass2('L1','hide','L2','hide','L3','hide')"-->
+                <a id="nav_02" href="/services.php" onmouseover="P7_MultiClass2('L1','hide','L2','show','L3','hide')" onmouseout="P7_MultiClass2('L1','hide','L2','hide','L3','hide')"><span> </span></a>
+                <a id="nav_03" href="/about.php" onmouseover="P7_MultiClass2('L1','hide','L2','hide','L3','show')" onmouseout="P7_MultiClass2('L1','hide','L2','hide','L3','hide')"><span> </span></a>
+                <a id="nav_04" href="/news.php"><span> </span></a>
+                <a id="nav_05" href="/contact.php"><span> </span></a>
+            </div>
+        </div><!-- end header /////////////////////////// -->
+        <div style="clear:both;"><span> </span>
+        </div>
+        <div id="banner_sub">
+            <div id="flag_sub-detail">
+                <div id="flag_sub-content">
+                    <h1>Properties</h1>
+                        <p><a href="/index.php">Columbia Properties</a> > <a href="/client/mainproperties">Properties</a></p>                                                                                       
+                </div>
+            </div>
+        </div>
+        
+
+        <div id="main">
+            <div id="main-top">
+                <div id="content_main-detail">
+                    <div id="propertyDetail-left">
+                        <div class="propertiesDetail_image-border">
+                            <img src="/${property.url ? property.url : 'propertyphotos/no-image.jpg'}" alt="" width="480" height="480" />
+                        </div>
+                        <div class="seperator"><span> </span>
+                        </div>
+
+                        <h3>Property Highlights</h3>
+                        <p> ${property.description}
+                    </div>
+                    <div id="propertyDetail-right">
+                        <img src="/propertyphotos/CRM_logo.jpg" alt="Columbia Retail Management Logo" width="308" />
+                        <div class="seperator"><span> </span></div>
+                        
+                        <h1>${property.property_name}</h1>
+                        
+                        <!-- <h3>Address</h3> -->
+                        <p> ${property.street_address}<br />
+                        ${property.county}<br />                                                                ${property.city},${property.state}&nbsp;${property.zipcode}<br />
+                                                        </p>
+                        <div style="clear:both;"><span> </span></div>
+                        
+                        <div class="seperator"><span> </span></div>
+                        
+                        <h3>Contact Info</h3>
+                        <div class="propertyDetail-content-left">
+                            <p>${property.title}<br />
+                            <a href="mailto:${property.email}">${property.contactname}</a><br />
+                            ${property.phone}</p>
+                        </div>
+                        <div class="propertyDetail-content-right">
+                            <br />
+                        </div>
+                        <div style="clear:both;"><span> </span></div>
+                        <div class="seperator"><span> </span></div>
+                        <h3>Downloads</h3>
+                        <!--the financial stmt.  need boolean for this to display or not-->
+                            <a href="/mediafiles/FINANCIAL_STATEMENT.pdf" target="_blank"><img src="images/btn_pdf.jpg" alt="pdf" style="border:none;" />&nbsp;Tenant Lease Application</a><br />
+
+                            ${media.map((med) => `
+
+                            <a href="${med.url}" target="_blank"><img src="images/btn_pdf.jpg" alt="pdf" style="border:none;" />&nbsp;${med.file_title}</a><br />
+
+                            `).join(' ')}
+                    </div>
+                    <div style="clear:both;"><span> </span></div>
+				</div><!-- end content main /////////////////////////// -->
+				<div style="clear:both;"><span> </span></div>
+
+			</div>
+		</div><!-- end main contents /////////////////////////// -->
+        
+        <div id="sub_nav">
+			<div id="L1" onmouseover="P7_MultiClass2('L1','show','L2','hide','L3','hide')" onmouseout="P7_MultiClass2('L1','hide','L2','hide','L3','hide','','')">
+
+			</div>
+			<div id="L2" onmouseover="P7_MultiClass2('L1','hide','L2','show','L3','hide','nav_02','active_02')" onmouseout="P7_MultiClass2('L1','hide','L2','hide','L3','hide','nav_02','')">
+				<a href="/develop.php">Development</a>
+				<a href="/manage.php">Management</a>
+				<a href="/leasing.php">Leasing</a>
+				<a href="/tenant-rep.php">Tenant Representation</a>
+				<a href="/investment.php">Investment</a>	
+                <!--<a href="/sales--finance.php">Sales &amp; Finance</a>-->
+			</div>
+			<div id="L3" onmouseover="P7_MultiClass2('L1','hide','L2','hide','L3','show','nav_03','active_03')" onmouseout="P7_MultiClass2('L1','hide','L2','hide','L3','hide','nav_03','')">
+				<a href="/development-history.php">Development History</a>
+				<a href="/keyemp.php">Key Employees</a>
+				<a href="/retrel.php">Retail Relationships</a>
+			</div>
+		</div>
+	</div>
+
+</div><!-- end main container /////////////////////////// -->
+<div id="footer_repeat">
+    <div id="footer_content">
+        <p align="center">Copyright &copy; 2019 Columbia Properties Inc.  |  1355 Terrell Mill Road, Building 1478, Suite 200 Marietta, Georgia 30067  |  tel. 678.460.3122  |  fax 770.953.4306<!--<br /><a href="/tenant-lease-application.php">Tenant Lease Application</a> | <a href="/financial-statements.php">Financial Statements</a>--></p>
+        <!--<p align="center"><a href="http://www.zeekeeinteractive.com" target="_blank"><img src="/images/slug_zeekee.jpg" alt="website design by zeekee interactive" style="border:none;" /></a></p>-->
+    </div>
+</div>
+</body>
+</html>
