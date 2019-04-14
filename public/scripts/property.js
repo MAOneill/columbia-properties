@@ -45,14 +45,18 @@ function getMouseData(event) {
 
     //validity check:
     //ok, technically, the star can only be placed 540-31 and 580-31 because of it's size
-    (mapx < 0) ? mapx = 0 : mapx=mapx;
-    (mapx > 509) ? mapx = 509 : mapx=mapx;
-    (mapy < 0 ) ? mapy = 0: mapy=mapy;
-    (mapy > 549) ? mapy = 549 : mapy=mapy;
+    mapx =  (mapx < 0) ? 0 : mapx;
+    mapx = (mapx > 509) ? 509 : mapx;
+    mapy = (mapy < 0 ) ?  0: mapy;
+    mapy = (mapy > 549) ? 549 : mapy;
 
+    //get the integer value of each!!!
+    mapx = parseInt(mapx);
+    mapy = parseInt(mapy);
     
     console.log(`the mapx x is ${mapx} and the mapy is ${mapy}`);
     //set the form values:
+    //they must be integers!
     mapxelement.value = mapx;
     mapyelement.value = mapy + 31;
 

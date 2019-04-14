@@ -26,6 +26,18 @@
 
 </head>
 
+<style>
+
+	.property_listing {
+
+		background-image:none;
+	}
+	.property_listing:nth-child(even) {
+		background-color: red;
+		
+	}
+
+</style>
 <body>
 				<div id="bg_repeat-sub">
 				<div id="main_container">
@@ -52,7 +64,7 @@
 				</div>
 						<div id="main">
 			<div id="main-top">
-						<div id="content_main">
+						<div class="content_main" id="content_main">
                         
                         
                         ${properties.map((property) =>  `
