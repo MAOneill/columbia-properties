@@ -150,7 +150,64 @@ position: relative;
     <input maxlength="48" type="text" name="city" value='${property.city ? property.city : ""}' id="form-city" size=30>
     <br>
     <label for="form-state">State</label>
-    <input maxlength="48" type="text" name="state" value='${property.state ? property.state : ""}' id="form-state" size=30>
+    <select name="state" id="form-state" >
+    <option ${property.state === "GA" ? "SELECTED" : " " } value="GA">GA</option>
+	<option ${property.state === "FL" ? "SELECTED" : " " } value="FL">FL</option>
+	<option ${property.state === "NC" ? "SELECTED" : " " } value="NC">NC</option>	
+	<option ${property.state === "AL" ? "SELECTED" : " " } value="AL">AL</option>
+	<option ${property.state === "AK" ? "SELECTED" : " " } value="AK">AK</option>
+	<option ${property.state === "AR" ? "SELECTED" : " " } value="AR">AR</option>	
+	<option ${property.state === "AZ" ? "SELECTED" : " " } value="AZ">AZ</option>
+	<option ${property.state === "CA" ? "SELECTED" : " " } value="CA">CA</option>
+	<option ${property.state === "CO" ? "SELECTED" : " " } value="CO">CO</option>
+	<option ${property.state === "CT" ? "SELECTED" : " " } value="CT">CT</option>
+	<option ${property.state === "DC" ? "SELECTED" : " " } value="DC">DC</option>
+	<option ${property.state === "DE" ? "SELECTED" : " " } value="DE">DE</option>
+	<option ${property.state === "HI" ? "SELECTED" : " " } value="HI">HI</option>
+	<option ${property.state === "IA" ? "SELECTED" : " " } value="IA">IA</option>	
+	<option ${property.state === "ID" ? "SELECTED" : " " } value="ID">ID</option>
+	<option ${property.state === "IL" ? "SELECTED" : " " } value="IL">IL</option>
+	<option ${property.state === "IN" ? "SELECTED" : " " } value="IN">IN</option>
+	<option ${property.state === "KS" ? "SELECTED" : " " } value="KS">KS</option>
+	<option ${property.state === "KY" ? "SELECTED" : " " } value="KY">KY</option>
+	<option ${property.state === "LA" ? "SELECTED" : " " } value="LA">LA</option>
+	<option ${property.state === "MA" ? "SELECTED" : " " } value="MA">MA</option>
+	<option ${property.state === "MD" ? "SELECTED" : " " } value="MD">MD</option>
+	<option ${property.state === "ME" ? "SELECTED" : " " } value="ME">ME</option>
+	<option ${property.state === "MI" ? "SELECTED" : " " } value="MI">MI</option>
+	<option ${property.state === "MN" ? "SELECTED" : " " } value="MN">MN</option>
+	<option ${property.state === "MO" ? "SELECTED" : " " } value="MO">MO</option>	
+	<option ${property.state === "MS" ? "SELECTED" : " " } value="MS">MS</option>
+	<option ${property.state === "MT" ? "SELECTED" : " " } value="MT">MT</option>
+	<option ${property.state === "NE" ? "SELECTED" : " " } value="NE">NE</option>
+	<option ${property.state === "NH" ? "SELECTED" : " " } value="NH">NH</option>
+	<option ${property.state === "NJ" ? "SELECTED" : " " } value="NJ">NJ</option>
+	<option ${property.state === "NM" ? "SELECTED" : " " } value="NM">NM</option>			
+	<option ${property.state === "NV" ? "SELECTED" : " " } value="NV">NV</option>
+	<option ${property.state === "NY" ? "SELECTED" : " " } value="NY">NY</option>
+	<option ${property.state === "ND" ? "SELECTED" : " " } value="ND">ND</option>
+	<option ${property.state === "OH" ? "SELECTED" : " " } value="OH">OH</option>
+	<option ${property.state === "OK" ? "SELECTED" : " " } value="OK">OK</option>
+	<option ${property.state === "OR" ? "SELECTED" : " " } value="OR">OR</option>
+	<option ${property.state === "PA" ? "SELECTED" : " " } value="PA">PA</option>
+	<option ${property.state === "RI" ? "SELECTED" : " " } value="RI">RI</option>
+	<option ${property.state === "SC" ? "SELECTED" : " " } value="SC">SC</option>
+	<option ${property.state === "SD" ? "SELECTED" : " " } value="SD">SD</option>
+	<option ${property.state === "TN" ? "SELECTED" : " " } value="TN">TN</option>
+	<option ${property.state === "TX" ? "SELECTED" : " " } value="TX">TX</option>
+	<option ${property.state === "UT" ? "SELECTED" : " " } value="UT">UT</option>
+	<option ${property.state === "VT" ? "SELECTED" : " " } value="VT">VT</option>
+	<option ${property.state === "VA" ? "SELECTED" : " " } value="VA">VA</option>
+	<option ${property.state === "WA" ? "SELECTED" : " " } value="WA">WA</option>
+	<option ${property.state === "WI" ? "SELECTED" : " " } value="WI">WI</option>	
+	<option ${property.state === "WV" ? "SELECTED" : " " } value="WV">WV</option>
+	<option ${property.state === "WY" ? "SELECTED" : " " } value="WY">WY</option>
+</select>
+    
+    
+    
+    
+    
     <br>
     <label for="form-zipcode">Zip Code</label>
     <input type="text" name="zipcode" value='${property.zipcode ? property.zipcode : ""}' id="form-zipcode" maxlength="10">
@@ -182,7 +239,8 @@ position: relative;
     <option value="Grocery anchored"  ${property.type ===  "Grocery anchored" ? "SELECTED" : ""} >Grocery anchored</option>
     <option value="Strip Retail" ${property.type ===  "Strip Retail" ? "SELECTED" : ""} >Strip Retail</option>
     <option value="Anchored" ${property.type ===  "Anchored" ? "SELECTED" : ""} >Anchored</option>
-    <option value="Outparcels" ${property.type ===  "Outparcels" ? "SELECTED" : ""} >Outparcels</option></select>
+    <option value="Outparcels" ${property.type ===  "Outparcels" ? "SELECTED" : ""} >Outparcels</option>
+    </select>
 
 
 
