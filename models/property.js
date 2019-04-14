@@ -124,7 +124,12 @@ class Property {
     static getAPropertyForClient(id){
 
         //restate the variable names...
-        return db.one(`SELECT PR.id as propid, PR.property_name, PR.street_address, PR.county, PR.city, PR.state, PR.zipcode, TRIM(TO_CHAR(PR.squarefeet,'999,999,999,999')) as squarefeet, PR.description, PR.directions, PR.show_mp, PH.url, PH.photo_name, E.name as contactname, E.title, E.email, E.phone FROM property as PR LEFT join photo as PH on PR.photo = PH.id LEFT join employee as E on PR.contact_id = E.id  WHERE PR.id = $1 `,[id]);
+        return db.one(`SELECT PR.id as propid, PR.property_name, PR.street_address, PR.county, PR.city, PR.state, PR.zipcode, TRIM(TO_CHAR(PR.squarefeet,'999,999,999,999')) as squarefeet, PR.description, PR.directions, PR.show_mp, PH.url, PH.photo_name, E.name as contactname, E.title, E.email, E.phone FROM property as PR LEFT join photo as PH on PR.photo = PH.id LEFT join employee as E on PR.contact_id = E.id  WHERE PR.id = $1 `,[id])
+        .catch((error) => {
+            console.log("the error is", error);
+            return error;  //this will return a QueryResultError object
+
+        });
     }
 
     

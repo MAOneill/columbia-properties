@@ -54,7 +54,7 @@ body {
     }
 
     form > input {
-        width: 98%;
+        width: 58%;
     }
     .myflexbox {
         display:flex;
@@ -112,6 +112,26 @@ position: relative;
     left:${property.mapx}px;
 }
 
+.mainform  label {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+    /* float: left; */
+}
+
+.mainform  {
+    display: inline-block;
+}
+
+.display-controls, .property-details, .general-info {
+    border:2px solid brown;
+    margin:10px;
+    /* padding numbers ANYWHERE seem to mess up the map!!!!*/
+    /* padding: 10px; */
+    width: 100%;
+}
+.subnote {
+    font-size: 70%;
+}
 </style>
 
 <body>
@@ -133,15 +153,32 @@ position: relative;
 
                 <div class="middle" >
 
-<form action="/property/update" method="POST">
+<form class="mainform" action="/property/update" method="POST">
     <h1>property id ${property.id}</h1>
     <input type="hidden" name="propid" value=${property.id ? property.id : ""}>
 
+    <div class="display-controls">
+    <br>
+    
+    <input type="checkbox" name="showmp" ${property.showMP ? 'checked' : ''} id="form-show-main-prop" size=30>
+    <label for="form-show-main-prop">Show on Main Properties Page. <span class="subnote">&nbsp;(sorted by highest 'sort code', then state, then name)</span></label>
+    <br>
+    
+    <input type="checkbox" name="showdi" ${property.showDI ? 'checked' : ''} id="form-show-dev-inv" size=30>
+    <label for="form-show-dev-inv">Show on Developments and Investments Page.<span class="subnote">&nbsp;(sorted by inverse year built, then name)</span></label>
+    <br>
+   
+    <input type="checkbox" name="showpd"  ${property.showPD ? 'checked' : ''} id="form-show-prev-dev" size=30>
+    <label for="form-show-prev-dev">Show on Previous Developments Section. <span class="subnote">&nbsp;(sorted by inverse year built, then name)</label>
+    </div>
+
+<div class="general-info">
+
     <label for="form-prop-name">Property Name</label>
-    <input maxlength="148" type="text" name="propertyname" value='${property.propertyName ? property.propertyName: "nameme"}' id="form-prop-name" size=100>
+    <input maxlength="148" type="text" name="propertyname" value='${property.propertyName ? property.propertyName: "nameme"}' id="form-prop-name" >
 <br>
     <label for="form-street-address">Street Address</label>
-    <input maxlength="148" type="text" name="streetaddress" value='${property.streetAddress ? property.streetAddress : ""}' id="form-street-address" size=100>
+    <input maxlength="148" type="text" name="streetaddress" value='${property.streetAddress ? property.streetAddress : ""}' id="form-street-address" >
     <br>
     <label for="form-county">County</label>
     <input maxlength="48" type="text" name="county" value='${property.county ? property.county : ""}' id="form-county" size=30>
@@ -212,9 +249,26 @@ position: relative;
     <label for="form-zipcode">Zip Code</label>
     <input type="text" name="zipcode" value='${property.zipcode ? property.zipcode : ""}' id="form-zipcode" maxlength="10">
     <br>
-    <label for="form-squarefeet">Squarefeet</label>
-    <input type="number" name="squarefeet" value='${property.squarefeet ? property.squarefeet : ""}' id="form-squarefeet" size=30>
-    <br>
+
+
+</div>
+
+<div class="property-details">
+
+<label for="form-squarefeet">Squarefeet</label>
+<input type="number" name="squarefeet" value='${property.squarefeet ? property.squarefeet : ""}' id="form-squarefeet" size=30>
+<br>
+<label for="form-type">Property Type</label>
+
+<select name="type" id="form-type">
+<option value="Grocery anchored"  ${property.type ===  "Grocery anchored" ? "SELECTED" : ""} >Grocery anchored</option>
+<option value="Strip Retail" ${property.type ===  "Strip Retail" ? "SELECTED" : ""} >Strip Retail</option>
+<option value="Anchored" ${property.type ===  "Anchored" ? "SELECTED" : ""} >Anchored</option>
+<option value="Outparcels" ${property.type ===  "Outparcels" ? "SELECTED" : ""} >Outparcels</option>
+</select>
+
+<br>
+
     <label for="form-description">Property Highlights</label>
     <textarea class="tinymce" name="description" id="form-description" >${property.description ? property.description : ""}</textarea>
 
@@ -232,27 +286,7 @@ position: relative;
     
     
     
-    <br>
-    <label for="form-type">Property Type</label>
 
-    <select name="type" id="form-type">
-    <option value="Grocery anchored"  ${property.type ===  "Grocery anchored" ? "SELECTED" : ""} >Grocery anchored</option>
-    <option value="Strip Retail" ${property.type ===  "Strip Retail" ? "SELECTED" : ""} >Strip Retail</option>
-    <option value="Anchored" ${property.type ===  "Anchored" ? "SELECTED" : ""} >Anchored</option>
-    <option value="Outparcels" ${property.type ===  "Outparcels" ? "SELECTED" : ""} >Outparcels</option>
-    </select>
-
-
-
-    <br>
-    <label for="form-show-main-prop">Show on Main Properties Page</label>
-    <input type="checkbox" name="showmp" ${property.showMP ? 'checked' : ''} id="form-show-main-prop" size=30>
-    <br>
-    <label for="form-show-dev-inv">Show on Developments and Investments Page</label>
-    <input type="checkbox" name="showdi" ${property.showDI ? 'checked' : ''} id="form-show-dev-inv" size=30>
-    <br>
-    <label for="form-show-prev-dev">Show on Previous Developments Section</label>
-    <input type="checkbox" name="showpd"  ${property.showPD ? 'checked' : ''} id="form-show-prev-dev" size=30>
 
     <br>
     <label for="form-previous-dev-desc">Previous Developments short description (starts with 'is')</label>
@@ -265,6 +299,7 @@ position: relative;
     <label for="form-major-tennants">Major Tenants</label>
     <input maxlength="98" type="text" name="majortenants" value='${property.majorTenants ? property.majorTenants : ""}' id="form-major-tennants" size=30>
     <br>
+</div>
 
 <!-- hidden fields for the map x and y coordinates -->
     <input  hidden type="number" data-mapx name="mapx" value='${property.mapx ? property.mapx : "0"}' id="form-mapx" >

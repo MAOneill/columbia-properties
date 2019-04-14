@@ -8,11 +8,16 @@ async function displayOneProperty (req, res) {
     //id comes in as req.params.id
 
     const propertyData = await Property.getAPropertyForClient(req.params.id);
-    
 
-    if (propertyData) {
+    // console.log("a bad property is", propertyData.message)
 
-        if (propertyData.show_mp = false) {
+    //.message appears if you got an error returned
+    if (propertyData.message) {
+        res.redirect('/client/mainproperties');
+    }
+    else if (propertyData) {
+
+        if (propertyData.show_mp === false) {
             res.redirect('/client/mainproperties');
         }
         else {  //process data
