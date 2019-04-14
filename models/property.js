@@ -31,8 +31,13 @@ class Property {
             this.mapy = mapy;
         }
 
+        //added sort - sort the main_prop = true, by name.  so the main properties will sort to the top
+        //these are the ones that we edit the most.
+        //i am not putting these on multiple pages.  we only have 85 as of 2019, so it doesn't make sense
+        //to split it up
     static getAllProperties() {
-        return db.any(`SELECT * from property`)
+        // return db.any(`SELECT * from property`)
+        return db.any(`SELECT * from property ORDER by show_mp DESC, property_name`)
         //i  need to turn this into an array of property objects...
         .then((sqlProperties) => {
             const propertyArray = [];
