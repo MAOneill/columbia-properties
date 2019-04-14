@@ -16,12 +16,12 @@ function escapeHtml (text) {
 //it adds its own VALID html that I don't want to 
 //escape.
 //but it doesn't handle quotes or apostrophes
+//but we want to leave double quotes because of urls added to description.
 function escapeQuotes (text) {
     var map = {
-        '"':'&quot',
         "'":'&#039'
     }
-    return text.replace(/['"]/g,function(m) {
+    return text.replace(/[']/g,function(m) {
         return map[m];
     })
 
