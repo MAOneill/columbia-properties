@@ -18,10 +18,12 @@
     float:right;
 }
 
-li {
-    /* display: list-item; */
+.prop-highlights ul li {
     padding-left: 2em;
     text-indent: -1.5em;
+    list-style-type: circle;
+    display: list-item;
+
 }
 /* CSS Document */
 
