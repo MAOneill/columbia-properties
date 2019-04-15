@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<title>Properties | Columbia Properties</title>
+<link rel="stylesheet" type="text/css" href="http://columbiapropertiesinc.com/css_zeekee.css" />
+
+
+<link rel="icon" href="http://columbiapropertiesinc.com/favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="http://columbiapropertiesinc.com/Icon.png"/> 
+<link rel="apple-touch-icon" sizes="72x72" href="http://columbiapropertiesinc.com/Icon-72.png"/> 
+<link rel="apple-touch-icon" sizes="114x114" href="http://columbiapropertiesinc.com/Icon114x.png"/>  
+
+<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+<link rel="stylesheet" href="/styles/client-css.css">
+
+
+<style>
+</style>
+
+<body>
+	<div id="bg_repeat-sub">
+		<div id="main_container">
+
+        ${headerPartial}
+
+        ${subHeader}
+
+<br>
+<br>
+
+			<div class="main">
+			        
+
+                        
+                    <div class="mapDetail-left">
+                        <h2>Georgia</h2>
+        
+                            ${properties.map((property) =>  `
+
+                            <h4 class="proplist"  ><a href="/client/property/detail/${property.id}" >${property.propertyname}</a></h4>
+
+                            `).join(' ')}
+                                    
+                    </div>
+                            
+                    <div class="mapDetail-right">
+                    <!--THE MAIN MAP-->                       
+                        <img src="/img/metroatlga.jpg" alt="" border="0" />
+                        
+    
+                        <!--THE STARS ON THE MAP-->
+                        <!--hides the stars if x and y coordinates are zeros or null -->
+                        ${properties.map((property) =>  `
+
+                        <div class="mapstar  ${(property.mapx === null || (property.mapx === 0 && property.mapy ===0)) ? "hidden" : " "   }"  style = " top:${property.mapy}px; left:${property.mapx}px; "  ><a href="/client/property/detail/${property.id}" ><img src="/img/thestar.png" alt="" style="border:none;" /></a></div>
+                        
+                        `).join(' ')}
+
+
+                        <div class = "popups">
+                                ${properties.map((property) =>  `
+
+                                    <!--pop ups are hidden for now-->
+                                    <div class="popup hidden">
+                                            <h4><a href="/client/property/detail/${property.id}">${property.propertyname}</a></h4>
+                                            <p>Type: ${property.type}<br />
+                                            Address: ${property.streetaddress}, ${property.county}, <br /> ${property.city}, ${property.state}, ${property.zipcode}<br />
+                                            Size: ${property.squarefeet}</p>    
+                                    </div>
+                                    
+
+                                    `).join(' ')}
+
+                        </div>
+
+                                
+                            							
+                                                        
+                            
+			        </div><!-- map_container-right/////////////////////// -->
+		</div>
+	</div><!-- end main contents /////////////////////////// -->
+</div>
+
+
+${footerPartial}
+
+</body>
+</html>
