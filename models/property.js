@@ -124,7 +124,8 @@ class Property {
         //get all the properties where show_mp is true
         
         //this can remain as an array of objects from sql, but I did rename the variables to the javascript friendly
-        return db.any(`SELECT PR.id as id, PR.property_name as propertyName, PR.street_address as streetAddress, PR.county, PR.city, PR.state, PR.type, PR.zipcode, PH.url FROM  property as PR LEFT join photo as PH on PR.photo = PH.id where PR.show_mp = true`)
+        return db.any(`SELECT PR.id as id, PR.property_name as propertyName, PR.street_address as streetAddress, PR.county, PR.city, PR.state, PR.type, PR.zipcode, PH.url , PR.sort_order FROM  property as PR LEFT join photo as PH on PR.photo = PH.id where PR.show_mp = true ORDER BY PR.sort_order DESC, PR.state, propertyName`)
+        // return db.any(`SELECT PR.id as id, PR.property_name as propertyName, PR.street_address as streetAddress, PR.county, PR.city, PR.state, PR.type, PR.zipcode, PH.url FROM  property as PR LEFT join photo as PH on PR.photo = PH.id where PR.show_mp = true`)
         //if photo id is null, then supply the 'no-image-url'  OR we can do this in HTML
 
     }

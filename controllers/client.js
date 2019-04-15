@@ -46,29 +46,49 @@ async function displayMainProperties (req, res) {
 
     //sort that object appropriately!  
     //for this demo we will sort by state then name
+    //this does come back sorted from sql, but the null sort-order will be at the top...
 
     //when sorting by two things, I'm doing the inner sort first (name) and then the outer sort (state)
     //when I implement a sort field in the property table, i need to update this.
 
+    //this first part will push null values for sort order to the end.  otherwise this defaults to be greater than a number.
     mainproperties.sort(function(a,b){  
-        if (a.state < b.state) {
-            return -1;
-        }
-        else if (a.state > b.state){
+        if (a.sort_order === null) {
             return 1;
         }
-        else {  //same state - sort by name
-            if (a.propertyName < b.propertyName) {
+        else if (b.sort_order === null) {
+            return -1;
+        }
+
+        else if (a.sort_order === b.sort_order) {
+            if (a.state < b.state) {
                 return -1;
             }
-            else if (a.propertyName > b.propertyName) {
+            else if (a.state > b.state){
                 return 1;
             }
-            else {
-                return 0;
+            else {  //same state - sort by name
+                if (a.propertyName < b.propertyName) {
+                    return -1;
+                }
+                else if (a.propertyName > b.propertyName) {
+                    return 1;
+                }
+                else {
+                    return 0;
+                }
             }
         }
-    });
+
+        else if (a.sort_order < b.sort_order) {
+            return 1;  //descending
+        }
+        else if (a.sort_order > b.sort_order) {
+            return -1;
+        }
+
+        });
+        
 
     console.log("the main properties are: ", mainproperties);
 
