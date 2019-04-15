@@ -24,7 +24,9 @@ async function displayOneProperty (req, res) {
             const mediaData = await Media.getAllforPropertyClient(req.params.id);
             console.log(mediaData);
             console.log("The property id is", propertyData);
-            res.render('view-property',{locals:{property:propertyData,media:mediaData}})
+            res.render('view-property',{locals:{property:propertyData,media:mediaData},partials:{
+                footerPartial: 'client-footer',headerPartial:'header-nav',subHeader:'client-header'}})
+            
 
             // res.send("working on property display");
         }
@@ -37,7 +39,8 @@ async function displayOneProperty (req, res) {
     //check that 1) the id exists and 2) the show_mp is true
     //otherwise redirect to mainproperty page
  
-}
+ }
+ 
 
 async function displayMainProperties (req, res) {
 
@@ -110,7 +113,8 @@ function previousProperties (req, res) {
 }
 async function showMap (req, res) {
     const GAprops = await Property.getGAPropertiesForMap();
-    res.render('map',{locals:{properties:GAprops}});
+    res.render('map',{locals:{properties:GAprops},partials:{
+        footerPartial: 'client-footer',headerPartial:'header-nav',subHeader:'client-header'}});
     console.log("ga only properties for map", GAprops);
     // res.send("got GA props")
 
