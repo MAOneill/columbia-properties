@@ -92,7 +92,7 @@ body {
   /* position: relative;   */
 
 }
-.addimagesubform {
+.addimagesubform , .addmediasubform{
     border:solid 2px purple;
 }
 .mymediabox {
@@ -169,6 +169,7 @@ position: relative;
                 <div class="middle" >
 
 <form class="mainform" action="/property/update" method="POST" data-main-form>
+
     <h1>Property id: ${property.id}</h1>
     <input type="hidden" name="propid" value=${property.id ? property.id : ""}>
 
@@ -372,7 +373,7 @@ position: relative;
     <button class="saveChanges" data-save-changes type="submit" >Save</button></form>
 
 </form>
-
+<br><br>
 
 <div ${property.id ? "": "hidden" } class="addimagesubform" >Upload an Image<br>
     <form class="addimagesubform" action="/property/addimage" METHOD="POST" encType="multipart/form-data">
@@ -382,6 +383,7 @@ position: relative;
         <button type="submit" class="submit-button">Upload File</button>
     </form>
 </div>
+<br><br>
 
 <div ${property.id ? "": "hidden" } class="addmediasubform" >Upload a Media file<br>
     <form class="addmediasubform" action="/property/addmedia" METHOD="POST" encType="multipart/form-data">
