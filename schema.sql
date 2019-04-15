@@ -40,7 +40,8 @@ create table property (
   year_opened integer,
   major_tenants varchar(100),
   mapx integer,
-  mapy integer  
+  mapy integer ,
+  sort_order integer
 );
 
 

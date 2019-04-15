@@ -7,7 +7,7 @@ const utils = require('../controllers/utils') ;  //utility file
 class Property {
     constructor (id, property_name, street_address, county, city, state, zipcode, squarefeet,
         description, directions, contact_id, type, show_mp, show_di, show_pd, pd_description, year_opened,
-        major_tenants, photo, mapx, mapy) {
+        major_tenants, photo, mapx, mapy, sort_order) {
             this.id = id;
             this.propertyName = property_name;
             this.streetAddress = street_address;
@@ -29,6 +29,7 @@ class Property {
             this.photo = photo;
             this.mapx = mapx;
             this.mapy = mapy;
+            this.sortOrder = sort_order;
         }
 
         //added sort - sort the main_prop = true, by name.  so the main properties will sort to the top
@@ -42,7 +43,7 @@ class Property {
         .then((sqlProperties) => {
             const propertyArray = [];
             sqlProperties.forEach((prop) => {
-                const propInstance = new Property(prop.id, prop.property_name, prop.street_address, prop.county, prop.city, prop.state, prop.zipcode, prop.squarefeet, prop.description, prop.directions, prop.contact_id, prop.type, prop.show_mp, prop.show_di, prop.show_pd, prop.pd_description, prop.year_opened, prop.major_tenants, prop.photo, prop.mapx, prop.mapy);   
+                const propInstance = new Property(prop.id, prop.property_name, prop.street_address, prop.county, prop.city, prop.state, prop.zipcode, prop.squarefeet, prop.description, prop.directions, prop.contact_id, prop.type, prop.show_mp, prop.show_di, prop.show_pd, prop.pd_description, prop.year_opened, prop.major_tenants, prop.photo, prop.mapx, prop.mapy, prop.sort_order);   
                 propertyArray.push(propInstance);
             })
             return propertyArray;
@@ -54,7 +55,7 @@ class Property {
     static getById(id) {
         return db.one(`SELECT * FROM property WHERE id=$1`,[id])  //returns an object
             .then((prop)=> {
-                const propertyInstance = new Property(prop.id, prop.property_name, prop.street_address, prop.county, prop.city, prop.state, prop.zipcode, prop.squarefeet, prop.description, prop.directions, prop.contact_id, prop.type, prop.show_mp, prop.show_di, prop.show_pd, prop.pd_description, prop.year_opened, prop.major_tenants, prop.photo, prop.mapx, prop.mapy);    
+                const propertyInstance = new Property(prop.id, prop.property_name, prop.street_address, prop.county, prop.city, prop.state, prop.zipcode, prop.squarefeet, prop.description, prop.directions, prop.contact_id, prop.type, prop.show_mp, prop.show_di, prop.show_pd, prop.pd_description, prop.year_opened, prop.major_tenants, prop.photo, prop.mapx, prop.mapy, prop.sort_order);    
                 return propertyInstance;    
             })
             .catch((error) => {
@@ -108,7 +109,9 @@ class Property {
         major_tenants = '${this.majorTenants}',
         photo = ${this.photo},
         mapx = ${this.mapx},
-        mapy = ${this.mapy}
+        mapy = ${this.mapy},
+        sort_order = ${this.sortOrder}
+        
             where id = ${this.id}`);
 
             

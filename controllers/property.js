@@ -55,7 +55,7 @@ async function showProperty(PropID, mymessage,newflag, req, res) {
  function showOneProperty (req, res) {
 
 
-    showProperty(req.body.propid,"nothing to say",false, req, res) ;
+    showProperty(req.body.propid,"",false, req, res) ;
 
     
 }
@@ -79,6 +79,8 @@ async function saveProperty (req, res) {
     console.log("what is in the req.body for mediaid????");
     console.log(req.body);
 
+    console.log("the sort order is", req.body.sortorder);
+
     const showmp = utils.convertCheckboxBoolean(req.body.showmp);
     const showdi = utils.convertCheckboxBoolean(req.body.showdi);
     const showpd = utils.convertCheckboxBoolean(req.body.showpd);
@@ -98,8 +100,8 @@ async function saveProperty (req, res) {
     const cleanType = utils.escapeHtml(req.body.type);
     const cleanPDDescription = utils.escapeHtml(req.body.pddescription);
     const cleanTenants = utils.escapeHtml(req.body.majortenants);
-
-
+    
+    
     //convert numerica values to NUMERIC
     const id = utils.covertToNull(req.body.propid);
     const yearopen = utils.covertToNull(req.body.yearopen);
@@ -108,12 +110,13 @@ async function saveProperty (req, res) {
     const photoid = utils.covertToNull(req.body.photoid);
     const mapx = utils.covertToNull(req.body.mapx);
     const mapy = utils.covertToNull(req.body.mapy);
-
+    const sortOrder = utils.covertToNull(req.body.sortorder);
+    
 
 console.log("The id of the property is", id);
 
     //create an instance of a Property Object
-const updateProperty = new Property(id, cleanPropertyName, cleanStreetAddress, cleanCounty, cleanCity, cleanState, cleanZipCode, sqfeet, cleanDescription, cleanDirections, contactid, cleanType, showmp, showdi, showpd, cleanPDDescription, yearopen, cleanTenants, photoid, mapx, mapy);   
+const updateProperty = new Property(id, cleanPropertyName, cleanStreetAddress, cleanCounty, cleanCity, cleanState, cleanZipCode, sqfeet, cleanDescription, cleanDirections, contactid, cleanType, showmp, showdi, showpd, cleanPDDescription, yearopen, cleanTenants, photoid, mapx, mapy, sortOrder);   
 
 console.log("the property object after being int the form......");
 console.log(updateProperty);

@@ -127,7 +127,7 @@ position: relative;
     margin:10px;
     /* padding numbers ANYWHERE seem to mess up the map!!!!*/
     /* padding: 10px; */
-    width: 100%;
+    width: 98%;
 }
 .subnote {
     font-size: 70%;
@@ -159,14 +159,19 @@ position: relative;
                 <div class="middle" >
 
 <form class="mainform" action="/property/update" method="POST" data-main-form>
-    <h1>property id ${property.id}</h1>
+    <h1>Property id: ${property.id}</h1>
     <input type="hidden" name="propid" value=${property.id ? property.id : ""}>
 
-    <div class="display-controls">
+    <div class="display-controls">  
     <br>
-    
+    <p>Note: Properties on the <a href="/client/mainproperties">Main Properties Display</a> are sorted the Desceding 'SORT-ORDER field, then by State then by Name.  If you want a particular property to appear at the top of the page, give the SORT-ORDER field a higher value.  Otherwise, leave it blank. </p>
+<br>
+    <label for="form-sort-order">Sort Order</label>
+    <input  type="number" name="sortorder" value='${property.sortOrder ? property.sortOrder: ""}' id="form-sort-order" >
+<br>
+
     <input type="checkbox" name="showmp" ${property.showMP ? 'checked' : ''} id="form-show-main-prop" size=30>
-    <label for="form-show-main-prop">Show on Main Properties Page. <span class="subnote">&nbsp;(sorted by highest 'sort code', then state, then name)</span></label>
+    <label for="form-show-main-prop">Show on Main Properties Page. <span class="subnote">&nbsp;(sorted by highest 'sort-order', then state, then name)</span></label>
     <br>
     
     <input type="checkbox" name="showdi" ${property.showDI ? 'checked' : ''} id="form-show-dev-inv" size=30>
@@ -175,7 +180,7 @@ position: relative;
    
     <input type="checkbox" name="showpd"  ${property.showPD ? 'checked' : ''} id="form-show-prev-dev" size=30>
     <label for="form-show-prev-dev">Show on Previous Developments Section. <span class="subnote">&nbsp;(sorted by inverse year built, then name)</label>
-    </div>
+    </div>  
 
 <div class="general-info">
 
