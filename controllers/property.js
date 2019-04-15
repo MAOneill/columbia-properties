@@ -236,7 +236,7 @@ async function uploadMedia (req, res) {
         //   res.send('File uploaded!');
 
         // save the data to the database
-        await Media.addMedia(req.body.mediapropid,`propertyphotos/${fileName}`, req.body.filetitle, true) ;
+        await Media.addMedia(req.body.mediapropid,`mediafiles/${fileName}`, req.body.filetitle, true) ;
 
         //and reload the property page
         showProperty(req.body.mediapropid,"Image uploaded",false, req, res);
