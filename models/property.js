@@ -124,10 +124,16 @@ class Property {
         //get all the properties where show_mp is true
         
         //this can remain as an array of objects from sql, but I did rename the variables to the javascript friendly
+        //this sort isn't enough.  null comes before any value for sort_order.  so i need to do this in javascript.
         return db.any(`SELECT PR.id as id, PR.property_name as propertyName, PR.street_address as streetAddress, PR.county, PR.city, PR.state, PR.type, PR.zipcode, PH.url , PR.sort_order FROM  property as PR LEFT join photo as PH on PR.photo = PH.id where PR.show_mp = true ORDER BY PR.sort_order DESC, PR.state, propertyName`)
         // return db.any(`SELECT PR.id as id, PR.property_name as propertyName, PR.street_address as streetAddress, PR.county, PR.city, PR.state, PR.type, PR.zipcode, PH.url FROM  property as PR LEFT join photo as PH on PR.photo = PH.id where PR.show_mp = true`)
         //if photo id is null, then supply the 'no-image-url'  OR we can do this in HTML
 
+    }
+
+    //gets only properties that have a true show_mp value for GA
+    static getGAPropertiesForMap() {
+        return db.any(`SELECT PR.id as id, PR.property_name as propertyName, PR.street_address as streetAddress, PR.county, PR.city, PR.state, PR.zipcode , PR.type, TRIM(TO_CHAR(PR.squarefeet,'999,999,999,999')) as squarefeet, PR.mapx, PR.mapy FROM  property as PR  where PR.show_mp = true AND PR.state= 'GA' ORDER BY propertyName`);
     }
 
     static getAPropertyForClient(id){

@@ -108,7 +108,12 @@ function aboutPage (req, res) {
 function previousProperties (req, res) {
 
 }
-function showMap (req, res) {
+async function showMap (req, res) {
+    const GAprops = await Property.getGAPropertiesForMap();
+    res.render('map',{locals:{properties:GAprops}});
+    console.log("ga only properties for map", GAprops);
+    // res.send("got GA props")
+
 
 }
 function keyEmployees (req, res) {

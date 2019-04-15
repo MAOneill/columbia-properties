@@ -125,7 +125,7 @@ position: relative;
 .display-controls, .property-details, .general-info {
     border:2px solid brown;
     margin:10px;
-   
+    
     padding: 10px;
     width: 98%;
 }
@@ -136,6 +136,16 @@ position: relative;
 .unsaved {
     color:red;
     
+}
+
+.buttonlookalike {
+     border-color: rgb(216, 216, 216) rgb(209, 209, 209) rgb(186, 186, 186);
+    border-style: solid;
+    border-width: 1px;
+    padding: 1px 7px 2px;
+    background-color: white;
+    width: 80px;
+
 }
 </style>
 
@@ -353,7 +363,10 @@ position: relative;
 <img  class="mymap" style="margin: 10px;" src="../img/metroatlga.jpg" data-map-element alt="">
 <img class="thestar ${(property.mapx === null || (property.mapx === 0 && property.mapy === 0 )) ? "hidden" : ""}" data-the-star src="../img/thestar.png" alt="">
 </div>
-<button data-remove-star >Remove Star</button>
+
+<p class="buttonlookalike" data-remove-star>Remove Star</p>
+
+<!-- <button data-remove-star >Remove Star</button> -->
 <hr>
 
     <button class="saveChanges" data-save-changes type="submit" >Save</button></form>
