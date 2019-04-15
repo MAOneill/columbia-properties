@@ -6,11 +6,12 @@
   "directories": {
     "test": "test"
   },
-
   "nodemonConfig": {
-    "ignore": ["sessions", "propertyphotos"]
+    "ignore": [
+      "sessions",
+      "propertyphotos"
+    ]
   },
-
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon --ignore sessions index.js",
