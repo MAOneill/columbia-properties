@@ -98,7 +98,8 @@ async function displayMainProperties (req, res) {
 
 
     // res.send("working on it. sorted");
-    res.render('user-main-property',{locals:{properties:mainproperties}});
+    res.render('user-main-property',{locals:{properties:mainproperties},partials:{
+        footerPartial: 'client-footer',headerPartial:'header-nav',subHeader:'client-header'}});
 }
 //write all the rest
 

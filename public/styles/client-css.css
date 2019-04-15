@@ -11,7 +11,12 @@
 
 }
 
-
+.banner_sub p {
+    display: inline;
+}
+.maplinkright {
+    float:right;
+}
 
 li {
     /* display: list-item; */
@@ -209,8 +214,35 @@ li.dropdown {
 	text-decoration: none;
 	background-color:#0093D1;
 }
-/* .nav:hover #L2 {
-    visibility: visible;
-} */
+
+.property_listing {
+    background-image: linear-gradient(to bottom right, #fcfcfc, #e9e4de);
+    flex-basis: 95%;
     
+
+}
+.property_listing:nth-child(even) {
+    /* background-color: red; */
+    background-image: linear-gradient(to bottom right, #e9e4de, #fcfcfc);
+
+    
+}
+
+.property_listing-left {
+	position:relative;
+	top:0;
+	left:0;
+	float: left;
+	width:520px;
+	height:auto;
+}
+
+.property_listing-right {
+	position:relative;
+	top:0;
+	left:0;
+	float: right;
+	width:200px;
+	height:auto;
+}
 

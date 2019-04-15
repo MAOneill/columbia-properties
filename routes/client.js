@@ -15,6 +15,13 @@ clientRouter.get('/previousproperties',previousProperties);
 clientRouter.get('/map',showMap);
 clientRouter.get('/employees',keyEmployees);
 clientRouter.get('/contact',contactPage);
+// clientRouter.get('/services',servicespage);
+// clientRouter.get('/retail',retailpage);
+// clientRouter.get('/develop',developmentpage);
+// clientRouter.get('/manage',managementpage);
+// clientRouter.get('/leasing',leasingpage);
+// clientRouter.get('/tenant-rep',tenantreppage);
+// clientRouter.get('/investment',investmentpage);
 
 
 module.exports = clientRouter;
