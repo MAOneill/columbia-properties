@@ -36,6 +36,7 @@ function getMouseData(event) {
   
   function turnSaveRed() {
     saveButton.classList.add("unsaved");
+    saveButton.textContent="Save Changes"
   }
   function mapClick(event) {
     var e = new getMouseData(event);
@@ -78,8 +79,9 @@ function getMouseData(event) {
     thestar.style.top = `${mapy + 31}px`; 
     thestar.style.left = `${mapx }px`;
     thestar.classList.remove('hidden');
-    
-    saveButton.classList.add("unsaved");
+
+    turnSaveRed()
+    // saveButton.classList.add("unsaved");
 
     }
   
@@ -87,8 +89,8 @@ function getMouseData(event) {
       mapxelement.value = 0;
       mapyelement.value = 0;
         thestar.classList.add('hidden');
-        saveButton.classList.add("unsaved");
-
+        // saveButton.classList.add("unsaved");
+      turnSaveRed();
   
     }
     
