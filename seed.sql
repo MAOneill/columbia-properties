@@ -18,7 +18,7 @@ values
 insert into users
 (name,login_id,password)
 values
-('Harmon','harmon','$2a$10$jZp0F7lHE2GcmoWrAchLdeygutazccwUTz7WAOWGx46Ietqy5BVVm'),
+('Harman','harman','$2a$10$jZp0F7lHE2GcmoWrAchLdeygutazccwUTz7WAOWGx46Ietqy5BVVm'),
 ('Rob','roneill','$2a$10$e1goHoRtk30TeAyZ72Km7egFY74kiT5jkzYT6J1qXwIqso8CFbq6m');
 
 

@@ -79,7 +79,6 @@ async function saveProperty (req, res) {
     console.log("what is in the req.body for mediaid????");
     console.log(req.body);
 
-    console.log("the sort order is", req.body.sortorder);
 
     const showmp = utils.convertCheckboxBoolean(req.body.showmp);
     const showdi = utils.convertCheckboxBoolean(req.body.showdi);
