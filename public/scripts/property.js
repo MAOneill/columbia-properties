@@ -14,6 +14,16 @@ const thestar = document.querySelector('[data-the-star]');
 const removeStarButtron = document.querySelector('[data-remove-star]');
 removeStarButtron.addEventListener('click', removeStar);
 
+//select all the input fields
+const inputFields = document.getElementsByTagName('input');
+for (index = 0; index < inputFields.length; ++index) {
+  inputFields[index].addEventListener('input',turnSaveRed);
+  console.log(inputFields[index]);
+}
+
+const saveButton = document.querySelector('[data-save-changes]');
+
+
 function getMouseData(event) {
     if(event) {
       this.x = event.clientX; 
@@ -24,7 +34,9 @@ function getMouseData(event) {
     }
   }
   
-  
+  function turnSaveRed() {
+    saveButton.classList.add("unsaved");
+  }
   function mapClick(event) {
     var e = new getMouseData(event);
   
@@ -60,20 +72,23 @@ function getMouseData(event) {
     mapxelement.value = mapx;
     mapyelement.value = mapy + 31;
 
-
-
     //make the star visible
 
     //and compensate for the size of the start 31x31
     thestar.style.top = `${mapy + 31}px`; 
     thestar.style.left = `${mapx }px`;
     thestar.classList.remove('hidden');
+    
+    saveButton.classList.add("unsaved");
+
     }
   
     function removeStar() {
       mapxelement.value = 0;
       mapyelement.value = 0;
         thestar.classList.add('hidden');
+        saveButton.classList.add("unsaved");
+
   
     }
     

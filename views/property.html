@@ -132,6 +132,11 @@ position: relative;
 .subnote {
     font-size: 70%;
 }
+
+.unsaved {
+    color:red;
+    
+}
 </style>
 
 <body>
@@ -153,7 +158,7 @@ position: relative;
 
                 <div class="middle" >
 
-<form class="mainform" action="/property/update" method="POST">
+<form class="mainform" action="/property/update" method="POST" data-main-form>
     <h1>property id ${property.id}</h1>
     <input type="hidden" name="propid" value=${property.id ? property.id : ""}>
 
@@ -346,7 +351,7 @@ position: relative;
 <button data-remove-star >Remove Star</button>
 <hr>
 
-    <button class="saveChanges" type="submit" >Save</button></form>
+    <button class="saveChanges" data-save-changes type="submit" >Save</button></form>
 
 </form>
 
