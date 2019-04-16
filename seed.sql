@@ -84,4 +84,9 @@ values
 (6,'mediafiles/11555424112Merganser-color-2012115-site-plan.pdf','Merganser Bonaire Site Plan',true),
 (6,'mediafiles/11555424130Merganser-Commons-Flyer.pdf','Merganser Bonaire Flyer',true);
 
-
+update property SET photo = 1 where id=1;
+update property SET photo = 2 where id=2;
+update property SET photo = 3 where id=3;
+update property SET photo = 4 where id=4;
+update property SET photo = 5 where id=5;
+update property SET photo = 6 where id=6;
