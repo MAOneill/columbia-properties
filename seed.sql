@@ -23,7 +23,7 @@ values
 
 
 insert into property 
-(property_name,street_address,county,city,state,zipcode,squarefeet,description,directions,contact_id,type,show_mp,show_di,show_pd,pd_description,year_opened,major_tenants)
+(property_name,street_address,county,city,state,zipcode,squarefeet,description,directions,contact_id,type,show_mp,show_di,show_pd,pd_description,year_opened,major_tenants,mapx,mapy)
 values
 ('The Village at Druid Hills','2566 Briarcliff Rd NE','Dekalb County','Atlanta','GA','30329',22287,'<li>New Construction- 22,287 square feet of retail and restaurant space</li>
     <li>Tenants include Mattress Firm and Sprint</li>
@@ -37,8 +37,8 @@ values
         <li>N. Druid Hills Rd. AADT- 46,130</li>
         <li>Briarcliff Rd. AADT- 11,710</li>
     </ul>
-    </li>','',1,'Strip Retail',true,true,false,'is a 26,150 s.f. development just east of Buckhead in the heart of Atlanta. Columbia and our partners closed this land purchase in 45 days in December 2012 from a regional lender who had foreclosed on the property. It is an outstanding piece of real estate located just off I-85 at North Druid Hills & Briarcliff Roads, less than 2 miles east of Lenox Mall and Phipps Plaza. Columbia was able to secure tenant commitments from national credit tenants Sprint, Mattress Firm, Newk’s Cafe, Sports Clips, and Willy’s all before commencing construction. Columbia sold the free-standing Mattress Firm in May of 2014 and refinanced the construction loan on the remaining shopping center into a permanent non-recourse loan creating a long-term high-quality income stream on this high quality asset.',0,''),
-('Brownsville Square','6525 Hiram-Douglasville Highway','Douglas County','Douglasville','GA','30134',50000,'Brownsville Square is in an excellent neighborhood location at the intersection of Hwy 92 and Brownsville Rd.  Average household income within a one mile radius is $90,589.  Shops enjoy excellent visibility and access from both Brownsville Rd. and Hwy 92.  This location is a high-growth area with projected 23.9% population growth in the next 5 years.','',1,'Grocery Anchored',true,true,true,'is a 65,000 square foot center which was originally developed by Columbia in 1995 as a Winn-Dixie and was re-tenanted with a Food Lion grocery store in 2009 and subsequently re-tenanted with a Food Depot grocery store in 2012 when Food Lion withdrew from the Atlanta market.',1997,'Winn-Dixie Marketplace'),
+    </li>','',1,'Strip Retail',true,true,false,'is a 26,150 s.f. development just east of Buckhead in the heart of Atlanta. Columbia and our partners closed this land purchase in 45 days in December 2012 from a regional lender who had foreclosed on the property. It is an outstanding piece of real estate located just off I-85 at North Druid Hills & Briarcliff Roads, less than 2 miles east of Lenox Mall and Phipps Plaza. Columbia was able to secure tenant commitments from national credit tenants Sprint, Mattress Firm, Newk’s Cafe, Sports Clips, and Willy’s all before commencing construction. Columbia sold the free-standing Mattress Firm in May of 2014 and refinanced the construction loan on the remaining shopping center into a permanent non-recourse loan creating a long-term high-quality income stream on this high quality asset.',0,'',289,237),
+('Brownsville Square','6525 Hiram-Douglasville Highway','Douglas County','Douglasville','GA','30134',50000,'Brownsville Square is in an excellent neighborhood location at the intersection of Hwy 92 and Brownsville Rd.  Average household income within a one mile radius is $90,589.  Shops enjoy excellent visibility and access from both Brownsville Rd. and Hwy 92.  This location is a high-growth area with projected 23.9% population growth in the next 5 years.','',1,'Grocery Anchored',true,true,true,'is a 65,000 square foot center which was originally developed by Columbia in 1995 as a Winn-Dixie and was re-tenanted with a Food Lion grocery store in 2009 and subsequently re-tenanted with a Food Depot grocery store in 2012 when Food Lion withdrew from the Atlanta market.',1997,'Winn-Dixie Marketplace',75,260),
 ('Parkside West Cobb Phase II','3805 Dallas Highway SW','Cobb County','Marietta','GA','30064',9500,'<strong>Coming Fall 2018! +/-9500 square feet restaurant and retail space</strong></p>
 <ul>
     <li>Excellent access, sought after retail location on Dallas Hwy</li>
@@ -50,14 +50,14 @@ values
     <li>146,610 GLA</li>
     <li>Traffic Counts - 32,850 cars per day</li>
 </ul>
-<p><a href="http://www.loopnet.com/Listing/Dallas-Hwy-Marietta-GA/11266002/" target="_blank">Loopnet Listing</a>','',1,'Grocery Anchored',true,true,true,'',2018,''),
-('Merchants Exchange','4400 Roswell Rd.','Cobb County','Marietta','GA','30062',9500,' ','',1,'Grocery Anchored',true,true,true,'',2004,''),
-('Village Shoppes at Windermere','3120 - 3130 Mathis Airport Road','Forsyth County','Suwanee','GA','30024',9500,'The Village Shoppes at Windermere is a 105,000 square foot Publix and CVS Pharmacy anchored shopping center located in the rapidly growing and affluent community of South Forsyth County.','',1,'Grocery Anchored',true,true,true,'',2018,''),
+<p><a href="http://www.loopnet.com/Listing/Dallas-Hwy-Marietta-GA/11266002/" target="_blank">Loopnet Listing</a>','',1,'Grocery Anchored',true,true,true,'',2018,'',null,null),
+('Merchants Exchange','4400 Roswell Rd.','Cobb County','Marietta','GA','30062',9500,' ','',1,'Grocery Anchored',true,true,true,'',2004,'',243,137),
+('Village Shoppes at Windermere','3120 - 3130 Mathis Airport Road','Forsyth County','Suwanee','GA','30024',9500,'The Village Shoppes at Windermere is a 105,000 square foot Publix and CVS Pharmacy anchored shopping center located in the rapidly growing and affluent community of South Forsyth County.','',1,'Grocery Anchored',true,true,true,'',2018,'',380,68),
 ('Merganser Commons at Bonaire','3SR 247 & HWY 96','Houston County','Warner Robins','GA','31005',9500,'New Publix anchored shopping center opening August 2018
 Close proximity to Robins Air Force Base
 Average Household Income within a 3-mile radius: $90,614
 Traffic Count on SR 247- 14,440 AADT
-Traffic Counts on SR 96- 17,000 AADT','',1,'Grocery Anchored',true,true,true,'',2018,'');
+Traffic Counts on SR 96- 17,000 AADT','',1,'Grocery Anchored',true,true,true,'',2018,'',null,null);
 
 insert into photo
 (prop_id,url,photo_name)
