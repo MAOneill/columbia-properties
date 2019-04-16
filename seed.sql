@@ -50,26 +50,38 @@ values
     <li>146,610 GLA</li>
     <li>Traffic Counts - 32,850 cars per day</li>
 </ul>
-<p><a href="http://www.loopnet.com/Listing/Dallas-Hwy-Marietta-GA/11266002/" target="_blank">Loopnet Listing</a>','',1,'Grocery Anchored',true,true,true,'',2018,'');
+<p><a href="http://www.loopnet.com/Listing/Dallas-Hwy-Marietta-GA/11266002/" target="_blank">Loopnet Listing</a>','',1,'Grocery Anchored',true,true,true,'',2018,''),
+('Merchants Exchange','4400 Roswell Rd.','Cobb County','Marietta','GA','30062',9500,' ','',1,'Grocery Anchored',true,true,true,'',2004,''),
+('Village Shoppes at Windermere','3120 - 3130 Mathis Airport Road','Forsyth County','Suwanee','GA','30024',9500,'The Village Shoppes at Windermere is a 105,000 square foot Publix and CVS Pharmacy anchored shopping center located in the rapidly growing and affluent community of South Forsyth County.','',1,'Grocery Anchored',true,true,true,'',2018,''),
+('Merganser Commons at Bonaire','3SR 247 & HWY 96','Houston County','Warner Robins','GA','31005',9500,'New Publix anchored shopping center opening August 2018
+Close proximity to Robins Air Force Base
+Average Household Income within a 3-mile radius: $90,614
+Traffic Count on SR 247- 14,440 AADT
+Traffic Counts on SR 96- 17,000 AADT','',1,'Grocery Anchored',true,true,true,'',2018,'');
 
 insert into photo
 (prop_id,url,photo_name)
 values
-(1,'propertyphotos/bbc5b2f68f59a78.jpg','brownsville_ugly.jpg'),
-(2,'propertyphotos/bbc5b2f68f59a78.jpg','brownsville3_ugly.jpg');
+(1,'propertyphotos/11555422466villiagedruidhills.jpg','villiagedruidhills.jpg'),
+(2,'propertyphotos/11555422568bbc5b2f68f59a78.jpg','brownsville_square.jpg'),
+(3,'propertyphotos/1155536142811555342669parksidewest2.jpg','parksidewest.jpg'),
+(4,'propertyphotos/11555422369merchantsBig.jpg','merchantswalk.jpg'),
+(5,'propertyphotos/11555422484windermere.jpg','windermere.jpg'),
+(6,'propertyphotos/11555422440merganserbonaire.jpg','merganser.jpg');
+
+
 
 insert into media
 (prop_id,url,file_title,display)
 values
-(1,'mediafiles/FINANCIAL_STATEMENT.pdf','Tenant Lease Applicatoin',true),
-(1,'mediafiles/Brownsville-Square-Flyer.pdf', 'Brownsville Square Property Information',true),
-(1,'mediafiles/FINANCIAL_STATEMENT.pdf','Tenant Lease Applicatoin',true),
-(2,'mediafiles/Brownsville-Square-Flyer.pdf', 'Brownsville Square Property Information',false),
-(2,'mediafiles/FINANCIAL_STATEMENT.pdf','Tenant Lease Applicatoin',true),
-(1,'mediafiles/Brownsville-Square-Flyer.pdf', 'Brownsville Square Property Information',true),
-(1,'mediafiles/FINANCIAL_STATEMENT.pdf','Tenant Lease Applicatoin',true),
-(2,'mediafiles/Brownsville-Square-Flyer.pdf', 'Brownsville Square Property Information',false),
-(2,'mediafiles/FINANCIAL_STATEMENT.pdf','Tenant Lease Applicatoin',true),
-(1,'mediafiles/Prince-Creek-Village-Center-Marketing-Package','dontuse',false);
+(1,'mediafiles/11555424190The-Village-at-Druid-Hills-Flyer.pdf', 'Villiage Druid Hills Flyer',true),
+(2,'mediafiles/11555424050Brownsville-Square-Flyer.pdf','Brownsville Square Flyer',true),
+(3,'mediafiles/11555423824Parkside-Phase-II-Marketing-Package-1.11.18.pdf','Parkside Phase II Marketing Package',true),
+(3,'mediafiles/11555423844Parkside-Tenants-Layout-OP-3-10.2016.pdf','Parkside Phase II Layout',true),
+(3,'mediafiles/11555423872Parkside-West-Cobb-Phase-II-Flyer.pdf','Parkside Phase II Marketing Package',true),
+(4,'mediafiles/11555423615Merchants-Exchange-Flyer.pdf','Merchants Exchange',true),
+(5,'mediafiles/11555424218VSW-Brochure-Flyer-r.pdf','Villiage Shoppes of Windermere Flyer',true),
+(6,'mediafiles/11555424112Merganser-color-2012115-site-plan.pdf','Merganser Bonaire Site Plan',true),
+(6,'mediafiles/11555424130Merganser-Commons-Flyer.pdf','Merganser Bonaire Flyer',true);
 
 
